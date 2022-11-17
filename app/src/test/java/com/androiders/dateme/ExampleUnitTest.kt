@@ -1,4 +1,4 @@
-package com.example.datemee
+package com.androiders.dateme
 
 import org.junit.Test
 

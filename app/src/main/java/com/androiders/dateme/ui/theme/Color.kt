@@ -1,4 +1,4 @@
-package com.example.datemee.ui.theme
+package com.androiders.dateme.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
