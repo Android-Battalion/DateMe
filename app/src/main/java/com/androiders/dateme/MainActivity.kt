@@ -19,7 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -135,14 +137,15 @@ fun OnBoardingPager(
 
         }
 
-        Box(modifier = Modifier.align(Alignment.BottomCenter)) {
+        Box(modifier = Modifier
+            .align(Alignment.BottomCenter)) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(340.dp),
-                backgroundColor = Color(0xffFFB9BA),
+                backgroundColor = CardBack,
                 elevation = 0.dp,
-                shape = BottomCardShape.large
+                shape = BottomCardShape.small
             ) {
                 Box() {
                     Column(
@@ -191,7 +194,15 @@ fun OnBoardingPager(
                                 }) {
                                     Text(
                                         text = "Skip Now",
-                                        color = Color.Black,
+                                        style = TextStyle(
+                                            //fontSize = 24.sp,
+                                            shadow = Shadow(
+                                                color = Color.Black,
+                                                //offset = offset,
+                                                blurRadius = 8f
+                                            )
+                                        ),
+                                        color = ColorDarkRed,
                                         fontFamily = PoppinsFam,
                                         textAlign = TextAlign.Right,
                                         fontSize = 14.sp,
@@ -220,7 +231,8 @@ fun OnBoardingPager(
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_right_arrow),
                                         contentDescription = "",
-                                        tint = item[pagerState.currentPage].backgroundColor,
+                                        //tint = item[pagerState.currentPage].backgroundColor,
+                                        tint = Color(0xffFFB9BA),
                                         modifier = Modifier.size(20.dp)
                                     )
                                 }
@@ -235,12 +247,20 @@ fun OnBoardingPager(
                                     ),
                                     contentPadding = PaddingValues(vertical = 12.dp),
                                     elevation = ButtonDefaults.elevation(
-                                        defaultElevation = 0.dp
+                                        defaultElevation = 4.dp
                                     )
                                 ) {
                                     Text(
                                         text = "Get Started",
-                                        color = Color.Black,
+                                        style = TextStyle(
+                                            //fontSize = 24.sp,
+                                            shadow = Shadow(
+                                                color = Color.Black,
+                                                //offset = offset,
+                                                blurRadius = 8f
+                                            )
+                                        ),
+                                        color = ColorDarkRed,
                                         fontSize = 16.sp
                                     )
                                 }
