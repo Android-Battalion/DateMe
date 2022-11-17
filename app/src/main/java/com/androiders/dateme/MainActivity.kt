@@ -300,12 +300,6 @@ fun OldStephaneFunc() {
                 ,
                 onClick = {},
                 shape = RoundedCornerShape(50),
-//                contentPadding = PaddingValues(
-//                    start = 0.dp,
-//                    top = 12.dp,
-//                    end = 20.dp,
-//                    bottom = 12.dp,
-//                )
                 ) {
                 // Inner content including an icon and a text label
                 Box(modifier = Modifier.padding(5.dp),
