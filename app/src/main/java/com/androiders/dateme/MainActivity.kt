@@ -18,7 +18,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.androiders.dateme.ui.theme.ColorGreen
+import com.androiders.dateme.ui.theme.ColorYellow
 import com.androiders.dateme.ui.theme.DateMeTheme
+import com.androiders.dateme.ui.theme.PoppinsFam
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +33,39 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    // onboarding component
+                    val items = ArrayList<OnBoardingData>()
+
+                    items.add(
+                        OnBoardingData(
+                            R.drawable.fruit,
+                            "Hmmm, Healthy Food",
+                            "A variety of healthy foods made by the best chefs. Ingredients are easy to find. all delicious flavors can only be found at cookbunda",
+                            backgroundColor = Color(0xFF0189C5),
+                            mainColor = Color(0xFF00B5EA)
+                        )
+                    )
+
+                    items.add(
+                        OnBoardingData(
+                            R.drawable.food,
+                            "Fresh Drinks, Stay Fresh",
+                            "Not only food. we provide clear healthy drink options for you. Fresh taste always accompanies you",
+                            backgroundColor = Color(0xFFE4AF19),
+                            mainColor = ColorYellow
+                        )
+                    )
+
+                    items.add(
+                        OnBoardingData(
+                            R.drawable.cookingcrop,
+                            "Let’s Cooking",
+                            "Are you ready to make a dish for your friends or family? create an account and cook",
+                            backgroundColor = Color(0xFF96E172),
+                            mainColor = ColorGreen
+                        )
+                    )
+
                     OldStephaneFunc()
                 }
             }
@@ -79,6 +115,8 @@ fun OldStephaneFunc() {
                             .size(45.dp)
                     )
                     Text(text = "Log in with Username or Email",
+                        fontFamily = PoppinsFam,
+                        fontSize = 12.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.Center),
@@ -99,15 +137,11 @@ fun OldStephaneFunc() {
                 ,
                 onClick = {},
                 shape = RoundedCornerShape(50),
-//                contentPadding = PaddingValues(
-//                    start = 0.dp,
-//                    top = 12.dp,
-//                    end = 20.dp,
-//                    bottom = 12.dp,
-//                )
             ) {
                 // Inner content including an icon and a text label
-                Box(modifier = Modifier.padding(5.dp),
+                Row(modifier = Modifier
+                    .padding(5.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.logo_z_tran_white),
@@ -115,14 +149,15 @@ fun OldStephaneFunc() {
                         modifier = Modifier
                             .size(45.dp)
                     )
-                    Text(text = "Log in with Username or Email",
+                    Text(text = "Create New Account",
+                        fontFamily = PoppinsFam,
+                        fontSize = 12.sp,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .align(Alignment.Center),
+                            .padding(end = 25.dp),
                         textAlign = TextAlign.End
 
                     )
-
                 }
             }
             Text(
