@@ -93,10 +93,6 @@ class MainActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .background(color = ColorBlue)
                     )
-
-
-
-                    //OldStephaneFunc()
                 }
             }
         }
@@ -269,104 +265,7 @@ fun OnBoardingPager(
                     }
                 }
             }
-
         }
-    }
-}
-
-
-@Composable
-fun OldStephaneFunc() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.LightGray),
-        //contentAlignment = Alignment.Center
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(440.dp)
-                .padding(35.dp),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Row() {
-
-            }
-            Button(
-                modifier = Modifier
-                    .width(380.dp)
-                ,
-                onClick = {},
-                shape = RoundedCornerShape(50),
-                ) {
-                // Inner content including an icon and a text label
-                Box(modifier = Modifier.padding(5.dp),
-                    ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.logo_z_tran_white),
-                        contentDescription = "Favorite",
-                        modifier = Modifier
-                            .size(45.dp)
-                    )
-                    Text(text = "Log in with Username or Email",
-                        fontFamily = PoppinsFam,
-                        fontSize = 12.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.Center),
-                        textAlign = TextAlign.End
-
-                    )
-
-                }
-            }
-
-            Spacer(modifier = Modifier
-                .size(20.dp)
-            )
-
-            Button(
-                modifier = Modifier
-                    .width(380.dp)
-                ,
-                onClick = {},
-                shape = RoundedCornerShape(50),
-            ) {
-                // Inner content including an icon and a text label
-                Row(modifier = Modifier
-                    .padding(5.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.logo_z_tran_white),
-                        contentDescription = "Favorite",
-                        modifier = Modifier
-                            .size(45.dp)
-                    )
-                    Text(text = "Create New Account",
-                        fontFamily = PoppinsFam,
-                        fontSize = 12.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(end = 25.dp),
-                        textAlign = TextAlign.End
-
-                    )
-                }
-            }
-            Text(
-                text = "Having trouble logging in?",
-                fontFamily = FontFamily.Serif,
-                fontSize = 14.sp,
-                color = Color.Black,
-                modifier = Modifier
-                    .clickable {}
-                    .padding(25.dp),
-                textAlign = TextAlign.Center
-            )
-        } // Start of page column
     }
 }
 
@@ -422,6 +321,6 @@ fun rememberPagerState(
 @Composable
 fun DefaultPreview() {
     DateMeTheme {
-        //OldStephaneFunc()
+
     }
 }
