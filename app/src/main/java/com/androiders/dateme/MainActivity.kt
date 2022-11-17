@@ -51,31 +51,31 @@ class MainActivity : ComponentActivity() {
 
                     items.add(
                         OnBoardingData(
-                            R.drawable.fruit,
-                            "Hmmm, Healthy Food",
-                            "A variety of healthy foods made by the best chefs. Ingredients are easy to find. all delicious flavors can only be found at cookbunda",
+                            R.drawable.coupleballoon1080w,
+                            "Date Me",
+                            "DateMe is a sample dating app that allows users to find others that are looking for connection. .",
                             backgroundColor = Color(0xFF0189C5),
-                            mainColor = Color(0xFF00B5EA)
+                            mainColor = Color.White
                         )
                     )
 
                     items.add(
                         OnBoardingData(
-                            R.drawable.food,
-                            "Fresh Drinks, Stay Fresh",
-                            "Not only food. we provide clear healthy drink options for you. Fresh taste always accompanies you",
+                            R.drawable.ballonpair1080w,
+                            "A new take on an old format",
+                            "The goal of this project is to practice & demonstrate the use of some Modern Android Development Practices, Material Design Theming & Jetpack Compose.",
                             backgroundColor = Color(0xFFE4AF19),
-                            mainColor = ColorYellow
+                            mainColor = Color.White
                         )
                     )
 
                     items.add(
                         OnBoardingData(
-                            R.drawable.cookingcrop,
-                            "Let’s Cooking",
-                            "Are you ready to make a dish for your friends or family? create an account and cook",
+                            R.drawable.couplefall1080w,
+                            "Let’s Get Started!",
+                            "Are you ready to make a profile and start exploring who is out there?",
                             backgroundColor = Color(0xFF96E172),
-                            mainColor = ColorGreen
+                            mainColor = Color.White
                         )
                     )
 
@@ -140,7 +140,7 @@ fun OnBoardingPager(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(340.dp),
-                backgroundColor = Color.White,
+                backgroundColor = Color(0xffFFB9BA),
                 elevation = 0.dp,
                 shape = BottomCardShape.large
             ) {
@@ -191,7 +191,7 @@ fun OnBoardingPager(
                                 }) {
                                     Text(
                                         text = "Skip Now",
-                                        color = Color(0xFF292D32),
+                                        color = Color.Black,
                                         fontFamily = PoppinsFam,
                                         textAlign = TextAlign.Right,
                                         fontSize = 14.sp,
@@ -220,7 +220,7 @@ fun OnBoardingPager(
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_right_arrow),
                                         contentDescription = "",
-                                        tint = item[pagerState.currentPage].mainColor,
+                                        tint = item[pagerState.currentPage].backgroundColor,
                                         modifier = Modifier.size(20.dp)
                                     )
                                 }
@@ -240,7 +240,7 @@ fun OnBoardingPager(
                                 ) {
                                     Text(
                                         text = "Get Started",
-                                        color = Color.White,
+                                        color = Color.Black,
                                         fontSize = 16.sp
                                     )
                                 }
