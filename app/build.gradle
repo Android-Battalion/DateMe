@@ -66,5 +66,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-pager:0.12.0" //This dependency is used for Horizontal Pager.
 
     // splash API
-    implementation 'androidx.core:core-splashscreen:1.0.0'
+    //implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    // navigation compose
+    implementation("androidx.navigation:navigation-compose:2.5.3")
 }
