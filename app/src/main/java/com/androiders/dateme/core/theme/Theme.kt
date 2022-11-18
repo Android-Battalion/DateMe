@@ -1,4 +1,4 @@
-package com.androiders.dateme.core.ui.theme
+package com.androiders.dateme.core.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

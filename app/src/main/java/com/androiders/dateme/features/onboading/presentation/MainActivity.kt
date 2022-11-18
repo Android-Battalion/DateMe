@@ -1,4 +1,4 @@
-package com.androiders.dateme.presentation
+package com.androiders.dateme.features.onboading.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -31,6 +31,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,24 +45,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.androiders.dateme.OnBoardingUiModel
 import com.androiders.dateme.R
-import com.androiders.dateme.core.ui.theme.BottomCardShape
-import com.androiders.dateme.core.ui.theme.CardBack
-import com.androiders.dateme.core.ui.theme.ColorBlue
-import com.androiders.dateme.core.ui.theme.ColorDarkRed
-import com.androiders.dateme.core.ui.theme.DateMeTheme
-import com.androiders.dateme.core.ui.theme.PoppinsFam
+import com.androiders.dateme.core.theme.BottomCardShape
+import com.androiders.dateme.core.theme.CardBack
+import com.androiders.dateme.core.theme.ColorBlue
+import com.androiders.dateme.core.theme.ColorDarkRed
+import com.androiders.dateme.core.theme.DateMeTheme
+import com.androiders.dateme.core.theme.PoppinsFam
+import com.androiders.dateme.features.onboading.presentation.provider.OnBoardingPagesProvider
+import com.androiders.dateme.features.onboading.presentation.model.OnBoardingUiModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalPagerApi::class, DelicateCoroutinesApi::class)
+    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -71,48 +72,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    // onboarding component
-                    val items = ArrayList<OnBoardingUiModel>()
 
-                    items.add(
-                        OnBoardingUiModel(
-                            R.drawable.coupleballoon1080w,
-                            "Date Me",
-                            "DateMe is a sample dating app that allows users to find others that are looking for connection. .",
-                            backgroundColor = Color(0xFF0189C5),
-                            mainColor = Color.White
-                        )
-                    )
-
-                    items.add(
-                        OnBoardingUiModel(
-                            R.drawable.ballonpair1080w,
-                            "A new take on an old format",
-                            "The goal of this project is to practice & demonstrate the use of some Modern Android Development Practices, Material Design Theming & Jetpack Compose.",
-                            backgroundColor = Color(0xFFE4AF19),
-                            mainColor = Color.White
-                        )
-                    )
-
-                    items.add(
-                        OnBoardingUiModel(
-                            R.drawable.couplefall1080w,
-                            "Let’s Get Started!",
-                            "Are you ready to make a profile and start exploring who is out there?",
-                            backgroundColor = Color(0xFF96E172),
-                            mainColor = Color.White
-                        )
-                    )
+                    val onBoardingPages = OnBoardingPagesProvider()
 
                     val pagerState = rememberPagerState(
-                        pageCount = items.size,
+                        pageCount = onBoardingPages.size,
                         initialOffscreenLimit = 2,
                         infiniteLoop = false,
                         initialPage = 0,
                     )
 
                     OnBoardingPager(
-                        item = items, pagerState = pagerState, modifier = Modifier
+                        item = onBoardingPages, pagerState = pagerState, modifier = Modifier
                             .fillMaxWidth()
                             .background(color = ColorBlue)
                     )
@@ -128,8 +99,10 @@ class MainActivity : ComponentActivity() {
 fun OnBoardingPager(
     item: List<OnBoardingUiModel>,
     pagerState: PagerState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
+
+    val coroutineScope = rememberCoroutineScope()
 
     Box(modifier = modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -207,7 +180,7 @@ fun OnBoardingPager(
                         ) {
 
 
-                            if (pagerState.currentPage != 2) {
+                            if (pagerState.currentPage != OnBoardingPagesProvider().size - 1) {
                                 TextButton(onClick = {
                                     //skip
                                 }) {
@@ -218,7 +191,7 @@ fun OnBoardingPager(
                                             shadow = Shadow(
                                                 color = Color.Black,
                                                 //offset = offset,
-                                                blurRadius = 8f
+                                                blurRadius = 0.2f
                                             )
                                         ),
                                         color = ColorDarkRed,
@@ -231,7 +204,7 @@ fun OnBoardingPager(
 
                                 OutlinedButton(
                                     onClick = {
-                                        GlobalScope.launch {
+                                        coroutineScope.launch {
                                             pagerState.scrollToPage(
                                                 pagerState.currentPage + 1,
                                                 pageOffset = 0f
@@ -272,11 +245,11 @@ fun OnBoardingPager(
                                     Text(
                                         text = "Get Started",
                                         style = TextStyle(
-                                            //fontSize = 24.sp,
+                                            fontWeight = FontWeight.Bold,
                                             shadow = Shadow(
                                                 color = Color.Black,
                                                 //offset = offset,
-                                                blurRadius = 8f
+                                                blurRadius = 1f
                                             )
                                         ),
                                         color = ColorDarkRed,
@@ -327,7 +300,7 @@ fun rememberPagerState(
     @androidx.annotation.IntRange(from = 0) initialPage: Int = 0,
     @FloatRange(from = 0.0, to = 1.0) initialPageOffset: Float = 0f,
     @androidx.annotation.IntRange(from = 1) initialOffscreenLimit: Int = 1,
-    infiniteLoop: Boolean = false
+    infiniteLoop: Boolean = false,
 ): PagerState = rememberSaveable(saver = PagerState.Saver) {
     PagerState(
         pageCount = pageCount,
@@ -337,7 +310,6 @@ fun rememberPagerState(
         infiniteLoop = infiniteLoop
     )
 }
-
 
 
 @Preview(showBackground = true)

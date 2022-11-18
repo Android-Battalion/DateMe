@@ -1,7 +1,7 @@
-package com.androiders.dateme
+package com.androiders.dateme.features.onboading.presentation.model
 
 import androidx.compose.ui.graphics.Color
-import com.androiders.dateme.core.ui.theme.ColorBlue
+import com.androiders.dateme.core.theme.ColorBlue
 
 data class OnBoardingUiModel(
     val image: Int,
