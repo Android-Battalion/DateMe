@@ -1,8 +1,26 @@
 buildscript {
     ext {
-        compose_version = '1.1.0-beta01'
+        // Build and SDK Constants
+        COMPILE_SDK = 32
+        TARGET_SDK = COMPILE_SDK
+        MIN_SDK = 28
+
+        // Dependencies
+        activity_compose = '1.3.1'
+        accompanist_system_ui_controller = '0.17.0'
+        accompanist_pager = '0.12.0'
+        compose = '1.1.0-beta01'
+        ktx_core = '1.7.0'
+        ktx_lifecycle = '2.3.1'
+        splash_screen = '1.0.0'
+
+        // Testing Dependencies
+        junit = '4.13.2'
+        junit_androidx = '1.1.4'
+        espresso_androidx = '3.5.0'
     }
-}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+}
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     id 'com.android.application' version '7.2.1' apply false
     id 'com.android.library' version '7.2.1' apply false

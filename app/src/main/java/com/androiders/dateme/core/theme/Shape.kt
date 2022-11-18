@@ -1,4 +1,4 @@
-package com.androiders.dateme.ui.theme
+package com.androiders.dateme.core.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
@@ -8,4 +8,8 @@ val Shapes = Shapes(
     small = RoundedCornerShape(4.dp),
     medium = RoundedCornerShape(4.dp),
     large = RoundedCornerShape(0.dp)
+)
+
+val BottomCardShape = Shapes(
+    large = RoundedCornerShape(topStart = 80.dp)
 )

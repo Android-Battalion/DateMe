@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk rootProject.COMPILE_SDK
 
     defaultConfig {
-        applicationId "com.example.datemee"
-        minSdk 28
-        targetSdk 32
+        applicationId "com.androiders.dateme"
+        minSdk rootProject.MIN_SDK
+        targetSdk rootProject.TARGET_SDK
         versionCode 1
         versionName "1.0"
 
@@ -36,7 +36,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion compose
     }
     packagingOptions {
         resources {
@@ -47,16 +47,30 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    // Core Dependencies
+    implementation "androidx.core:core-ktx:$ktx_core"
+    implementation "androidx.compose.ui:ui:$compose"
+    implementation "androidx.compose.material:material:$compose"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose"
+    implementation "androidx.activity:activity-compose:$activity_compose"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$ktx_lifecycle"
+
+    // Testing Dependencies
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$junit_androidx"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_androidx"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose"
+
+    // Google Accompanist
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_system_ui_controller"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_pager"
+    //This dependency is used for Horizontal Pager.
+
+    // Splash Screen API
+    implementation "androidx.core:core-splashscreen:$splash_screen"
+
+    // Navigation Compose
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.5.3'
 }
