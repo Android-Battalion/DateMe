@@ -1,4 +1,4 @@
-package com.androiders.dateme
+package com.androiders.dateme.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -44,12 +44,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.androiders.dateme.ui.theme.BottomCardShape
-import com.androiders.dateme.ui.theme.CardBack
-import com.androiders.dateme.ui.theme.ColorBlue
-import com.androiders.dateme.ui.theme.ColorDarkRed
-import com.androiders.dateme.ui.theme.DateMeTheme
-import com.androiders.dateme.ui.theme.PoppinsFam
+import com.androiders.dateme.OnBoardingUiModel
+import com.androiders.dateme.R
+import com.androiders.dateme.core.ui.theme.BottomCardShape
+import com.androiders.dateme.core.ui.theme.CardBack
+import com.androiders.dateme.core.ui.theme.ColorBlue
+import com.androiders.dateme.core.ui.theme.ColorDarkRed
+import com.androiders.dateme.core.ui.theme.DateMeTheme
+import com.androiders.dateme.core.ui.theme.PoppinsFam
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -70,10 +72,10 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     // onboarding component
-                    val items = ArrayList<OnBoardingData>()
+                    val items = ArrayList<OnBoardingUiModel>()
 
                     items.add(
-                        OnBoardingData(
+                        OnBoardingUiModel(
                             R.drawable.coupleballoon1080w,
                             "Date Me",
                             "DateMe is a sample dating app that allows users to find others that are looking for connection. .",
@@ -83,7 +85,7 @@ class MainActivity : ComponentActivity() {
                     )
 
                     items.add(
-                        OnBoardingData(
+                        OnBoardingUiModel(
                             R.drawable.ballonpair1080w,
                             "A new take on an old format",
                             "The goal of this project is to practice & demonstrate the use of some Modern Android Development Practices, Material Design Theming & Jetpack Compose.",
@@ -93,7 +95,7 @@ class MainActivity : ComponentActivity() {
                     )
 
                     items.add(
-                        OnBoardingData(
+                        OnBoardingUiModel(
                             R.drawable.couplefall1080w,
                             "Let’s Get Started!",
                             "Are you ready to make a profile and start exploring who is out there?",
@@ -124,7 +126,7 @@ class MainActivity : ComponentActivity() {
 @ExperimentalPagerApi
 @Composable
 fun OnBoardingPager(
-    item: List<OnBoardingData>,
+    item: List<OnBoardingUiModel>,
     pagerState: PagerState,
     modifier: Modifier = Modifier
 ) {
@@ -291,7 +293,7 @@ fun OnBoardingPager(
 }
 
 @Composable
-fun PagerIndicator(currentPage: Int, items: List<OnBoardingData>) {
+fun PagerIndicator(currentPage: Int, items: List<OnBoardingUiModel>) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.padding(top = 20.dp)
