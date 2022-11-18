@@ -7,7 +7,7 @@ import com.androiders.dateme.features.onboading.ui.model.OnBoardingUiModel
 // TODO : Refactor this to use `stringResources`
 val page1 = OnBoardingUiModel(
     R.drawable.coupleballoon1080w,
-    "Welcome!",
+    "Welcome",
     "Enjoy the moment. Meet new and interesting people around you.",
     backgroundColor = Color(0xFF0189C5),
     mainColor = Color.White

@@ -39,6 +39,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -178,7 +179,7 @@ fun OnBoardingPager(
                                     //skip
                                 }) {
                                     Text(
-                                        text = "Skip Now",
+                                        stringResource(R.string.SkipNow),
                                         style = TextStyle(
                                             //fontSize = 24.sp,
                                             shadow = Shadow(

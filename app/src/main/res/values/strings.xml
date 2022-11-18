@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">DateMe</string>
     <string name="title_activity_onboarding">Onboarding</string>
-    <string name="discover">Discover</string>
+
+    <!--Strings for Onboarding Pages -->
+    <string name="Welcome">Welcome</string>
+    <string name="Welc_Desc">Enjoy the moment. Meet new and interesting people around you.</string>
+    <string name="Discover">Discover</string>
+    <string name="Disc_Desc">Find the special one. Match and connect with your type.</string>
+    <string name="GetStarted">Get Started!</string>
+    <string name="GetStarted_Desc">Make a profile and start exploring who\'s out there.</string>
+    <!--Strings for Onboarding Pages -->
+    <string name="SkipNow">Skip Now</string>
 </resources>
