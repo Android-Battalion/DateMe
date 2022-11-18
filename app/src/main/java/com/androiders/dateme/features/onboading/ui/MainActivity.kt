@@ -1,4 +1,4 @@
-package com.androiders.dateme.features.onboading.presentation
+package com.androiders.dateme.features.onboading.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -52,13 +52,12 @@ import com.androiders.dateme.core.theme.ColorBlue
 import com.androiders.dateme.core.theme.ColorDarkRed
 import com.androiders.dateme.core.theme.DateMeTheme
 import com.androiders.dateme.core.theme.PoppinsFam
-import com.androiders.dateme.features.onboading.presentation.provider.OnBoardingPagesProvider
-import com.androiders.dateme.features.onboading.presentation.model.OnBoardingUiModel
+import com.androiders.dateme.features.onboading.ui.model.OnBoardingUiModel
+import com.androiders.dateme.features.onboading.ui.provider.OnBoardingPagesProvider
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -93,7 +92,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@DelicateCoroutinesApi
 @ExperimentalPagerApi
 @Composable
 fun OnBoardingPager(
@@ -116,11 +114,9 @@ fun OnBoardingPager(
                 ) {
 
                     Image(
-                        painter = painterResource(
-                            id = item[page].image),
+                        painter = painterResource(id = item[page].image),
                         contentDescription = item[page].title,
-                        modifier = Modifier
-                            .fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
                     )
 
 
@@ -141,18 +137,15 @@ fun OnBoardingPager(
             ) {
                 Box() {
                     Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
                     ) {
                         PagerIndicator(items = item, currentPage = pagerState.currentPage)
                         Text(
                             text = item[pagerState.currentPage].title,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 20.dp, end = 30.dp),
-//                            color = Color(0xFF292D32),
                             color = item[pagerState.currentPage].mainColor,
                             fontFamily = PoppinsFam,
-                            textAlign = TextAlign.Right,
+                            textAlign = TextAlign.Center,
                             fontSize = 20.sp,
                             fontWeight = FontWeight.ExtraBold
                         )
@@ -160,11 +153,11 @@ fun OnBoardingPager(
                         Text(
                             text = item[pagerState.currentPage].desc,
                             modifier = Modifier.padding(top = 20.dp, start = 40.dp, end = 20.dp),
-                            color = Color.Gray,
-                            fontFamily = PoppinsFam,
+                            color = MaterialTheme.colors.onSurface,
+                            fontFamily = MaterialTheme.typography.body1.fontFamily,
                             fontSize = 17.sp,
                             textAlign = TextAlign.Center,
-                            fontWeight = FontWeight.ExtraLight
+                            fontWeight = FontWeight.Light,
                         )
 
                     }

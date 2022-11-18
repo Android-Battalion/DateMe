@@ -1,6 +1,6 @@
-package com.androiders.dateme.features.onboading.presentation.provider
+package com.androiders.dateme.features.onboading.ui.provider
 
-import com.androiders.dateme.features.onboading.presentation.model.OnBoardingUiModel
+import com.androiders.dateme.features.onboading.ui.model.OnBoardingUiModel
 
 object OnBoardingPagesProvider {
 
