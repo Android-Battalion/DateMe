@@ -1,8 +1,8 @@
-package com.androiders.dateme.features.onboading.ui.provider
+package com.androiders.dateme.features.onboarding.ui.provider
 
 import androidx.compose.ui.graphics.Color
 import com.androiders.dateme.R
-import com.androiders.dateme.features.onboading.ui.model.OnBoardingUiModel
+import com.androiders.dateme.features.onboarding.ui.model.OnBoardingUiModel
 
 // TODO : Refactor this to use `stringResources`
 val page1 = OnBoardingUiModel(

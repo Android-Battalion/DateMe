@@ -1,4 +1,4 @@
-package com.androiders.dateme.features.onboading.ui.model
+package com.androiders.dateme.features.onboarding.ui.model
 
 import androidx.compose.ui.graphics.Color
 import com.androiders.dateme.core.theme.ColorBlue

@@ -1,4 +1,4 @@
-package com.androiders.dateme.features.onboading.ui
+package com.androiders.dateme.features.onboarding.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -52,8 +52,8 @@ import com.androiders.dateme.core.theme.ColorBlue
 import com.androiders.dateme.core.theme.ColorDarkRed
 import com.androiders.dateme.core.theme.DateMeTheme
 import com.androiders.dateme.core.theme.PoppinsFam
-import com.androiders.dateme.features.onboading.ui.model.OnBoardingUiModel
-import com.androiders.dateme.features.onboading.ui.provider.OnBoardingPagesProvider
+import com.androiders.dateme.features.onboarding.ui.model.OnBoardingUiModel
+import com.androiders.dateme.features.onboarding.ui.provider.OnBoardingPagesProvider
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
