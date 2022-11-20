@@ -1,8 +1,5 @@
-package com.androiders.dateme.features.onboarding.ui
+package com.androiders.dateme.features.onboarding.ui.screen
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
@@ -27,7 +24,6 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -60,37 +56,26 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalPagerApi::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            DateMeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun OnBoardingScreen() {
 
-                    val onBoardingPages = OnBoardingPagesProvider()
+    val onBoardingPages = OnBoardingPagesProvider()
 
-                    val pagerState = rememberPagerState(
-                        pageCount = onBoardingPages.size,
-                        initialOffscreenLimit = 2,
-                        infiniteLoop = false,
-                        initialPage = 0,
-                    )
+    val pagerState = rememberPagerState(
+        pageCount = onBoardingPages.size,
+        initialOffscreenLimit = 2,
+        infiniteLoop = false,
+        initialPage = 0,
+    )
 
-                    OnBoardingPager(
-                        item = onBoardingPages, pagerState = pagerState, modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = ColorBlue)
-                    )
-                }
-            }
-        }
-    }
+    OnBoardingPager(
+        item = onBoardingPages, pagerState = pagerState, modifier = Modifier
+            .fillMaxWidth()
+            .background(color = ColorBlue)
+    )
 }
+
 
 @ExperimentalPagerApi
 @Composable
