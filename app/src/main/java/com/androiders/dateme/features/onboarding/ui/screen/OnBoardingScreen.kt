@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -69,9 +70,10 @@ fun OnBoardingScreen() {
         initialPage = 0,
     )
 
+
     OnBoardingPager(
         item = onBoardingPages, pagerState = pagerState, modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .background(color = ColorBlue)
     )
 }
@@ -88,22 +90,19 @@ fun OnBoardingPager(
     val coroutineScope = rememberCoroutineScope()
 
     Box(modifier = modifier) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column {
             HorizontalPager(state = pagerState) { page ->
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(item[page].backgroundColor),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top
+                   modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
                     Image(
                         painter = painterResource(id = item[page].image),
                         contentDescription = item[page].title,
-                        modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.FillHeight
                     )
-
 
                 }
             }
@@ -115,12 +114,13 @@ fun OnBoardingPager(
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(340.dp),
+                    .height(340.dp)
+                    .clip(RoundedCornerShape(topStart = 150.dp)),
                 backgroundColor = CardBack,
                 elevation = 0.dp,
                 shape = BottomCardShape.small
             ) {
-                Box() {
+                Box {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
@@ -195,7 +195,8 @@ fun OnBoardingPager(
                                     ),
                                     shape = RoundedCornerShape(50), // = 50% percent
                                     //or shape = CircleShape
-                                    colors = ButtonDefaults.outlinedButtonColors(contentColor = item[pagerState.currentPage].mainColor),
+                                    colors = ButtonDefaults.outlinedButtonColors(contentColor =
+                                    item[pagerState.currentPage].mainColor),
                                     modifier = Modifier.size(65.dp)
                                 ) {
                                     Icon(
@@ -294,6 +295,6 @@ fun rememberPagerState(
 @Composable
 fun DefaultPreview() {
     DateMeTheme {
-
+        OnBoardingScreen()
     }
 }
