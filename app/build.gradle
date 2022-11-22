@@ -1,15 +1,18 @@
+import com.androiders.dateme.buildsrc.Libs
+import com.androiders.dateme.buildsrc.SDK
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "org.jlleitschuh.gradle.ktlint" version '11.0.0'
 }
 
 android {
-    compileSdk rootProject.COMPILE_SDK
+    compileSdk SDK.max
 
     defaultConfig {
         applicationId "com.androiders.dateme"
-        minSdk rootProject.MIN_SDK
-        targetSdk rootProject.TARGET_SDK
+        minSdk SDK.min
+        targetSdk SDK.max
         versionCode 1
         versionName "1.0"
 
@@ -36,7 +39,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose
+        kotlinCompilerExtensionVersion Libs.Kotlin.kotlinCompiler
     }
     packagingOptions {
         resources {
@@ -45,32 +48,46 @@ android {
     }
 }
 
+tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
+ktlint{
+    android = true
+    ignoreFailures = false
+    disabledRules = ["no-wildcard-imports"]
+    reporters {
+        reporter "plain"
+        reporter "checkstyle"
+        reporter "sarif"
+    }
+}
+
 dependencies {
 
     // Core Dependencies
-    implementation "androidx.core:core-ktx:$ktx_core"
-    implementation "androidx.compose.ui:ui:$compose"
-    implementation "androidx.compose.material:material:$compose"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose"
-    implementation "androidx.activity:activity-compose:$activity_compose"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$ktx_lifecycle"
+    implementation Libs.AndroidX.coreKtx
+    implementation Libs.AndroidX.Compose.ui
+    implementation Libs.AndroidX.Compose.material
+    implementation Libs.AndroidX.Compose.toolingPreview
+    implementation Libs.AndroidX.Activity.activityCompose
+    implementation Libs.AndroidX.Lifecycle.runtime
+
+    // Google Accompanist
+    implementation Libs.Accompanist.systemUi
+    implementation Libs.Accompanist.pager
+    //This dependency is used for Horizontal Pager.
+
+    // Splash Screen API
+    implementation Libs.SplashScreen.core
+
+    // Navigation Compose
+    implementation Libs.Navigation.nav
 
     // Testing Dependencies
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$junit_androidx"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_androidx"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose"
 
-    // Google Accompanist
-    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_system_ui_controller"
-    implementation "com.google.accompanist:accompanist-pager:$accompanist_pager"
-    //This dependency is used for Horizontal Pager.
-
-    // Splash Screen API
-    implementation "androidx.core:core-splashscreen:$splash_screen"
-
-    // Navigation Compose
-    implementation 'androidx.navigation:navigation-runtime-ktx:2.5.3'
+    androidTestImplementation Libs.AndroidX.Compose.uiTest
+    debugImplementation Libs.AndroidX.Compose.uiTooling
+    debugImplementation Libs.AndroidX.Compose.toolingPreview
 }
