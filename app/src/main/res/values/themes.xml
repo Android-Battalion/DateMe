@@ -11,9 +11,9 @@
 
         <!-- Use windowSplashScreenAnimatedIcon to add either a drawable or an
              animated drawable. One of these is required. -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/flaheartanyden</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/flameheartcombinedink</item>
         <!-- Required for animated icons -->
-        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
 
         <!-- Set the theme of the Activity that directly follows your splash screen. -->
         <!-- Required -->
