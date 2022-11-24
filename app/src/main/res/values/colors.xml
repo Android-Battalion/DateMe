@@ -7,7 +7,4 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<!--    Adding colors in from the core theme-->
-    <color name="Pinkish">#FFFFB9BA</color>
-    <color name="DarkRed">#FF3F2629</color>
 </resources>
