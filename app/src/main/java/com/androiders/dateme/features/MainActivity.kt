@@ -9,10 +9,8 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.androiders.dateme.core.theme.DateMeTheme
 import com.androiders.dateme.features.onboarding.ui.screen.OnBoardingScreen
-import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

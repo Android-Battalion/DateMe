@@ -11,5 +11,4 @@ object OnBoardingPagesProvider {
             val onBoardingPages = listOf(page1, page2, page3)
             addAll(onBoardingPages)
         }
-
 }

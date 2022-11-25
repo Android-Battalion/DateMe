@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -70,12 +71,12 @@ fun OnBoardingScreen() {
     )
 
     OnBoardingPager(
-        item = onBoardingPages, pagerState = pagerState, modifier = Modifier
-            .fillMaxWidth()
+        item = onBoardingPages, pagerState = pagerState,
+        modifier = Modifier
+            .fillMaxSize()
             .background(color = ColorBlue)
     )
 }
-
 
 @ExperimentalPagerApi
 @Composable
@@ -88,39 +89,37 @@ fun OnBoardingPager(
     val coroutineScope = rememberCoroutineScope()
 
     Box(modifier = modifier) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column {
             HorizontalPager(state = pagerState) { page ->
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(item[page].backgroundColor),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top
+                    modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
                     Image(
                         painter = painterResource(id = item[page].image),
                         contentDescription = item[page].title,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.FillHeight
                     )
-
-
                 }
             }
-
         }
 
-        Box(modifier = Modifier
-            .align(Alignment.BottomCenter)) {
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+        ) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(340.dp),
+                    .height(340.dp)
+                    .clip(RoundedCornerShape(topStart = 150.dp)),
                 backgroundColor = CardBack,
                 elevation = 0.dp,
                 shape = BottomCardShape.small
             ) {
-                Box() {
+                Box {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
@@ -144,7 +143,6 @@ fun OnBoardingPager(
                             textAlign = TextAlign.Center,
                             fontWeight = FontWeight.Light,
                         )
-
                     }
                     Box(
                         modifier = Modifier
@@ -157,18 +155,17 @@ fun OnBoardingPager(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
 
-
                             if (pagerState.currentPage != OnBoardingPagesProvider().size - 1) {
                                 TextButton(onClick = {
-                                    //skip
+                                    // skip
                                 }) {
                                     Text(
                                         text = "Skip Now",
                                         style = TextStyle(
-                                            //fontSize = 24.sp,
+                                            // fontSize = 24.sp,
                                             shadow = Shadow(
                                                 color = Color.Black,
-                                                //offset = offset,
+                                                // offset = offset,
                                                 blurRadius = 0.2f
                                             )
                                         ),
@@ -194,14 +191,17 @@ fun OnBoardingPager(
                                         item[pagerState.currentPage].mainColor
                                     ),
                                     shape = RoundedCornerShape(50), // = 50% percent
-                                    //or shape = CircleShape
-                                    colors = ButtonDefaults.outlinedButtonColors(contentColor = item[pagerState.currentPage].mainColor),
+                                    // or shape = CircleShape
+                                    colors = ButtonDefaults.outlinedButtonColors(
+                                        contentColor =
+                                        item[pagerState.currentPage].mainColor
+                                    ),
                                     modifier = Modifier.size(65.dp)
                                 ) {
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_right_arrow),
                                         contentDescription = "",
-                                        //tint = item[pagerState.currentPage].backgroundColor,
+                                        // tint = item[pagerState.currentPage].backgroundColor,
                                         tint = Color(0xffFFB9BA),
                                         modifier = Modifier.size(20.dp)
                                     )
@@ -209,7 +209,7 @@ fun OnBoardingPager(
                             } else {
                                 Button(
                                     onClick = {
-                                        //show home screen
+                                        // show home screen
                                     },
                                     modifier = Modifier.fillMaxWidth(),
                                     colors = ButtonDefaults.buttonColors(
@@ -226,7 +226,7 @@ fun OnBoardingPager(
                                             fontWeight = FontWeight.Bold,
                                             shadow = Shadow(
                                                 color = Color.Black,
-                                                //offset = offset,
+                                                // offset = offset,
                                                 blurRadius = 1f
                                             )
                                         ),
@@ -289,11 +289,10 @@ fun rememberPagerState(
     )
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     DateMeTheme {
-
+        OnBoardingScreen()
     }
 }
