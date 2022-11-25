@@ -22,7 +22,7 @@ val page2 = OnBoardingUiModel(
 val page3 = OnBoardingUiModel(
     R.drawable.couplefall1080w,
     "Get Started!",
-    "Make a profile and start exploring who\\'s out there.",
+    "Make a profile and start exploring who\'s out there.",
     backgroundColor = Color(0xFF96E172),
     mainColor = Color.White
 )
