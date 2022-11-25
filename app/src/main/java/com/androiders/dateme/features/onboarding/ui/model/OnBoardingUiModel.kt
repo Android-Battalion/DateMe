@@ -5,8 +5,8 @@ import com.androiders.dateme.core.theme.ColorBlue
 
 data class OnBoardingUiModel(
     val image: Int,
-    val title: Int,
-    val desc: Int,
+    val title: String,
+    val desc: String,
     val backgroundColor: Color,
     val mainColor: Color = ColorBlue,
 )
