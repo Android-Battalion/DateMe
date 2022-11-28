@@ -28,7 +28,6 @@ import com.androiders.dateme.core.theme.PinkLavender
 @Composable
 fun LoginScreen() {
 
-
     val gradient = Brush.verticalGradient(0.5f to CongoPink, 0.5f to Color.White)
 
     var emailTextState by remember { mutableStateOf(TextFieldValue()) }
@@ -59,7 +58,7 @@ fun ScreenContent(
     onPasswordTextChange: (value: TextFieldValue) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
 
-    ) {
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -110,7 +109,6 @@ fun ScreenContent(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
                 )
 
-
                 Text(
                     text = "Password",
                     color = Color.Black,
@@ -132,13 +130,15 @@ fun ScreenContent(
                         .height(50.dp)
                         .border(0.5.dp, PinkLavender, shape = RoundedCornerShape(10.dp)),
                     singleLine = true,
-                    visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    visualTransformation = if (isPasswordVisible) VisualTransformation.None
+                    else PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
 
                     trailingIcon = {
                         IconButton(onClick = { onPasswordVisibilityChange() }) {
                             Icon(
-                                painter = if (isPasswordVisible) painterResource(id = R.drawable.ic_eye_password_show) else painterResource(
+                                painter = if (isPasswordVisible) painterResource
+                                (id = R.drawable.ic_eye_password_show) else painterResource(
                                     id = R.drawable.ic_eye_password_hide
                                 ),
                                 contentDescription = "Password Toggle", tint = Color.Black
@@ -176,7 +176,7 @@ fun ScreenContent(
                             Alignment.CenterHorizontally
                         ),
 
-                    )
+                )
 
                 Spacer(modifier = Modifier.height(30.dp))
 
@@ -184,7 +184,8 @@ fun ScreenContent(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround,
                 ) {
-                    IconButton(onClick = { /*TODO*/ }
+                    IconButton(
+                        onClick = { /*TODO*/ }
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_facebook),
@@ -193,7 +194,8 @@ fun ScreenContent(
                         )
                     }
 
-                    IconButton(onClick = { /*TODO*/ }
+                    IconButton(
+                        onClick = { /*TODO*/ }
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_google),
@@ -202,7 +204,8 @@ fun ScreenContent(
                         )
                     }
 
-                    IconButton(onClick = { /*TODO*/ }
+                    IconButton(
+                        onClick = { /*TODO*/ }
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_smartphone),
@@ -211,8 +214,6 @@ fun ScreenContent(
                         )
                     }
                 }
-
-
             }
 
             Spacer(modifier = Modifier.height(75.dp))
@@ -228,7 +229,5 @@ fun ScreenContent(
                 }
             }
         }
-
     }
 }
-
