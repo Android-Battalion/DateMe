@@ -1,4 +1,4 @@
-package com.androiders.dateme.features
+package com.androiders.dateme.features.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
