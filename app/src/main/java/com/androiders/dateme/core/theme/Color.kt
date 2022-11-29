@@ -13,3 +13,6 @@ val ColorGreen = Color(0xFF8DDD66)
 
 val ColorDarkRed = Color(0xff3F2629)
 val CardBack = Color(0xffFFB9BA)
+
+val CongoPink = Color(0xffFF8081)
+val PinkLavender = Color(0xffDAB8C0)
