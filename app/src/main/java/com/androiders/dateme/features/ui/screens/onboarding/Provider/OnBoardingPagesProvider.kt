@@ -1,6 +1,6 @@
-package com.androiders.dateme.features.onboarding.ui.provider
+package com.androiders.dateme.features.ui.screens.onboarding.Provider
 
-import com.androiders.dateme.features.onboarding.ui.model.OnBoardingUiModel
+import com.androiders.dateme.features.ui.screens.onboarding.Model.OnBoardingUiModel
 
 object OnBoardingPagesProvider {
 
