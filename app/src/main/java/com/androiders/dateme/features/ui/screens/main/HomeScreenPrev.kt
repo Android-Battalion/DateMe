@@ -3,6 +3,7 @@ package com.androiders.dateme.features.ui.screens.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,7 +38,13 @@ fun HomePlaPrev() {
                 text = "Under Construction",
                 fontSize = 25.sp
             )
-            Button(onClick = { /*TODO*/ }) {
+            Button(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Yellow,
+                    contentColor = Color.Black
+                )
+            ) {
                 Text(text = "Send to next page")
             }
         }

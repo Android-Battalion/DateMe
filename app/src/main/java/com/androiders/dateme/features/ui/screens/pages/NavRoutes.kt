@@ -1,4 +1,4 @@
-package com.androiders.dateme.features.ui
+package com.androiders.dateme.features.ui.screens.pages
 
 sealed class NavRoutes(val route: String) {
     object Home : NavRoutes("home")

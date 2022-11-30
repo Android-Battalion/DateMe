@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.androiders.dateme.features.ui.NavRoutes
+import com.androiders.dateme.features.ui.screens.pages.NavRoutes
 
 @Composable
 fun HomePla(navController: NavController) {
