@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.androiders.dateme.core.theme.DateMeTheme
 
+// this is just for previewing purposes. Make sure up to date
 @Composable
 fun HomePlaPrev() {
     Box(
