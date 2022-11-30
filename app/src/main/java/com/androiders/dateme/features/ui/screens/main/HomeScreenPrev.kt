@@ -1,7 +1,8 @@
-package com.androiders.dateme.features.screens
+package com.androiders.dateme.features.ui.screens.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,7 +13,7 @@ import androidx.compose.ui.unit.sp
 import com.androiders.dateme.core.theme.DateMeTheme
 
 @Composable
-fun HomePla() {
+fun HomePlaPrev() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -23,12 +24,21 @@ fun HomePla() {
             modifier = Modifier
                 .fillMaxHeight()
                 .background(Color.LightGray),
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(
+                text = "Home Page",
+                fontSize = 45.sp
+            )
+
             Text(
                 text = "Under Construction",
                 fontSize = 25.sp
             )
+            Button(onClick = { /*TODO*/ }) {
+                Text(text = "Send to next page")
+            }
         }
     }
 }
@@ -37,6 +47,6 @@ fun HomePla() {
 @Composable
 fun HomePlaPreview() {
     DateMeTheme {
-        HomePla()
+        HomePlaPrev()
     }
 }
