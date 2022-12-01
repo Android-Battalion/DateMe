@@ -1,5 +1,8 @@
 package com.androiders.dateme.features.signUp.ui.screen
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -12,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.ExtraBold
@@ -24,9 +28,13 @@ import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
 import com.androiders.dateme.core.theme.CongoPink
 import com.androiders.dateme.core.theme.PinkLavender
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(auth: FirebaseAuth) {
+
+    val tag = "SignUpScreen"
+    val context = LocalContext.current
 
     val gradient = Brush.verticalGradient(0.5f to CongoPink, 0.5f to Color.White)
 
@@ -47,7 +55,10 @@ fun SignUpScreen() {
         { value -> passwordTextState = value },
         {
             isPasswordVisible = !isPasswordVisible
-        }
+        },
+        auth,
+        tag,
+        context
     )
 }
 
@@ -62,8 +73,11 @@ fun ScreenContent(
     onEmailTextChange: (value: TextFieldValue) -> Unit,
     onPasswordTextChange: (value: TextFieldValue) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
+    auth: FirebaseAuth,
+    tag: String,
+    context: Context
 
-    ) {
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -168,7 +182,7 @@ fun ScreenContent(
                         IconButton(onClick = { onPasswordVisibilityChange() }) {
                             Icon(
                                 painter = if (isPasswordVisible) painterResource
-                                    (id = R.drawable.ic_eye_password_show) else painterResource(
+                                (id = R.drawable.ic_eye_password_show) else painterResource(
                                     id = R.drawable.ic_eye_password_hide
                                 ),
                                 contentDescription = "Password Toggle", tint = Color.Black
@@ -178,7 +192,9 @@ fun ScreenContent(
                 )
 
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        createAccount(emailTextState, passwordTextState, auth, tag, context)
+                    },
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .padding(top = 40.dp)
@@ -199,7 +215,7 @@ fun ScreenContent(
                             Alignment.CenterHorizontally
                         ),
 
-                    )
+                )
 
                 Spacer(modifier = Modifier.height(30.dp))
 
@@ -253,4 +269,30 @@ fun ScreenContent(
             }
         }
     }
+}
+
+private fun createAccount(
+    email: TextFieldValue,
+    password: TextFieldValue,
+    auth: FirebaseAuth,
+    tag: String,
+    context: Context
+) {
+    auth.createUserWithEmailAndPassword(email.text, password.text)
+        .addOnCompleteListener { task ->
+
+            if (task.isSuccessful) {
+                // Sign in success, update UI with the signed-in user's information
+                Log.d(tag, "createUserWithEmail:success")
+//            val user = auth.currentUser
+//            updateUI(user)
+            } else {
+                // If sign in fails, display a message to the user.
+                Log.w(tag, "createUserWithEmail:failure", task.exception)
+                Toast.makeText(
+                    context, "Authentication failed.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
 }

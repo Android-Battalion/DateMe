@@ -7,6 +7,11 @@ buildscript {
         junit_androidx = '1.1.4'
         espresso_androidx = '3.5.0'
     }
+
+    dependencies {
+        // Add the dependency for the Google services Gradle plugin
+        classpath 'com.google.gms:google-services:4.3.14'
+    }
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
