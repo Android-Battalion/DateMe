@@ -44,6 +44,14 @@ fun HomePla(navController: NavController) {
             ) {
                 Text(text = "Send to next page")
             }
+            Button(
+                onClick =
+                {
+                    navController.navigate(NavRoutes.Login.route)
+                }
+            ) {
+                Text(text = "Send to Login Page")
+            }
         }
     }
 }
