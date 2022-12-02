@@ -1,4 +1,4 @@
-package com.androiders.dateme.features.login.ui.screen
+package com.androiders.dateme.features.auth.ui.screen
 
 import android.content.Context
 import android.util.Log

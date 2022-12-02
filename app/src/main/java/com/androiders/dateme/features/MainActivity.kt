@@ -8,7 +8,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.androiders.dateme.core.theme.DateMeTheme
-import com.androiders.dateme.features.login.ui.screen.LoginScreen
 import com.androiders.dateme.features.onboarding.ui.screen.OnBoardingScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
