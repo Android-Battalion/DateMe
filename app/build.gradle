@@ -77,7 +77,8 @@ dependencies {
     //This dependency is used for Horizontal Pager.
 
     // Splash Screen API
-    implementation Libs.SplashScreen.core
+    //implementation Libs.SplashScreen.core
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
     // Navigation Compose
     implementation Libs.Navigation.nav
