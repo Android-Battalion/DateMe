@@ -63,7 +63,7 @@ fun ScreenContent(
     onPasswordTextChange: (value: TextFieldValue) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
 
-    ) {
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -168,7 +168,7 @@ fun ScreenContent(
                         IconButton(onClick = { onPasswordVisibilityChange() }) {
                             Icon(
                                 painter = if (isPasswordVisible) painterResource
-                                    (id = R.drawable.ic_eye_password_show) else painterResource(
+                                (id = R.drawable.ic_eye_password_show) else painterResource(
                                     id = R.drawable.ic_eye_password_hide
                                 ),
                                 contentDescription = "Password Toggle", tint = Color.Black
@@ -199,7 +199,7 @@ fun ScreenContent(
                             Alignment.CenterHorizontally
                         ),
 
-                    )
+                )
 
                 Spacer(modifier = Modifier.height(30.dp))
 
