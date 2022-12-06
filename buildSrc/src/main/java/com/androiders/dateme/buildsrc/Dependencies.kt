@@ -54,4 +54,9 @@ object Libs {
         const val core  = "androidx.core:core-splashscreen:1.0.0"
     }
 
+    object DataStore {
+        const val prefs = "androidx.datastore:datastore-preferences:1.0.0"
+    }
+
+
 }
