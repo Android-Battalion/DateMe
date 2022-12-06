@@ -9,18 +9,13 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.androiders.dateme.core.theme.DateMeTheme
 import com.androiders.dateme.features.onboarding.ui.screen.OnBoardingScreen
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        auth = Firebase.auth
 
         setContent {
             DateMeTheme {
@@ -29,18 +24,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                 OnBoardingScreen()
+                    OnBoardingScreen()
                 }
             }
         }
     }
-
-//    public override fun onStart() {
-//        super.onStart()
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        val currentUser = auth.currentUser
-//        if(currentUser != null){
-//            reload();
-//        }
-//    }
 }

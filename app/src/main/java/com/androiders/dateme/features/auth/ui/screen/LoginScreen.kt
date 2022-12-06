@@ -28,10 +28,12 @@ import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
 import com.androiders.dateme.core.theme.CongoPink
 import com.androiders.dateme.core.theme.PinkLavender
-import com.google.firebase.auth.FirebaseAuth
+import com.androiders.dateme.features.auth.viewModel.AuthViewModel
+import com.androiders.dateme.util.NetworkResult
+import com.google.firebase.auth.FirebaseUser
 
 @Composable
-fun LoginScreen(auth: FirebaseAuth) {
+fun LoginScreen(authViewModel: AuthViewModel) {
 
     val tag = "LoginScreen"
     val context = LocalContext.current
@@ -43,6 +45,8 @@ fun LoginScreen(auth: FirebaseAuth) {
 
     var isPasswordVisible by remember { mutableStateOf(false) }
 
+    val authResource = authViewModel.loginFlow.collectAsState()
+
     ScreenContent(
         gradient,
         emailTextState,
@@ -53,9 +57,10 @@ fun LoginScreen(auth: FirebaseAuth) {
         {
             isPasswordVisible = !isPasswordVisible
         },
-        auth,
+        authViewModel,
         tag,
-        context
+        context,
+        authResource
     )
 }
 
@@ -68,9 +73,10 @@ fun ScreenContent(
     onEmailTextChange: (value: TextFieldValue) -> Unit,
     onPasswordTextChange: (value: TextFieldValue) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
-    auth: FirebaseAuth,
+    viewModel: AuthViewModel,
     tag: String,
-    context: Context
+    context: Context,
+    authResource: State<NetworkResult<FirebaseUser>?>
 ) {
     Box(
         modifier = Modifier
@@ -151,7 +157,7 @@ fun ScreenContent(
                         IconButton(onClick = { onPasswordVisibilityChange() }) {
                             Icon(
                                 painter = if (isPasswordVisible) painterResource
-                                    (id = R.drawable.ic_eye_password_show) else painterResource(
+                                (id = R.drawable.ic_eye_password_show) else painterResource(
                                     id = R.drawable.ic_eye_password_hide
                                 ),
                                 contentDescription = "Password Toggle", tint = Color.Black
@@ -168,7 +174,37 @@ fun ScreenContent(
                 }
 
                 Button(
-                    onClick = { signIn(emailTextState, passwordTextState, auth, tag, context) },
+                    onClick = {
+                        viewModel.loginWithEmailAndPassword(
+                            emailTextState.text,
+                            passwordTextState.text
+                        )
+
+                        authResource.value?.let {
+                            when (it) {
+
+                                is NetworkResult.Error -> {
+                                    Log.i(tag, "signInWithEmail:failure ${it.message}")
+                                    Toast.makeText(
+                                        context,
+                                        "The email or password you entered is incorrect.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                                is NetworkResult.Loading -> {
+                                }
+
+                                is NetworkResult.Success -> {
+                                    Log.d(tag, "signInWithEmail:success")
+                                    Toast.makeText(
+                                        context, "Authentication sucess.",
+                                        Toast.LENGTH_SHORT
+                                    ).show() // should be replaced with navigation
+                                }
+                            }
+                        }
+                    },
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .padding(top = 40.dp)
@@ -189,7 +225,7 @@ fun ScreenContent(
                             Alignment.CenterHorizontally
                         ),
 
-                    )
+                )
 
                 Spacer(modifier = Modifier.height(30.dp))
 
@@ -245,27 +281,27 @@ fun ScreenContent(
     }
 }
 
-private fun signIn(
-    email: TextFieldValue,
-    password: TextFieldValue,
-    auth: FirebaseAuth,
-    tag: String,
-    context: Context
-) {
-    auth.signInWithEmailAndPassword(email.text, password.text)
-        .addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                // Sign in success, update UI with the signed-in user's information
-                Log.d(tag, "signInWithEmail:success")
-//                val user = auth.currentUser
-//                updateUI(user)
-            } else {
-                // If sign in fails, display a message to the user.
-                Log.w(tag, "signInWithEmail:failure", task.exception)
-                Toast.makeText(
-                    context, "Authentication failed.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-}
+// private fun signIn(
+//    email: TextFieldValue,
+//    password: TextFieldValue,
+//    auth: FirebaseAuth,
+//    tag: String,
+//    context: Context
+// ) {
+//    auth.signInWithEmailAndPassword(email.text, password.text)
+//        .addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                // Sign in success, update UI with the signed-in user's information
+//                Log.d(tag, "signInWithEmail:success")
+// //                val user = auth.currentUser
+// //                updateUI(user)
+//            } else {
+//                // If sign in fails, display a message to the user.
+//                Log.w(tag, "signInWithEmail:failure", task.exception)
+//                Toast.makeText(
+//                    context, "Authentication failed.",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        }
+// }

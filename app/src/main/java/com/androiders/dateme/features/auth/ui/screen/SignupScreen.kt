@@ -28,10 +28,12 @@ import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
 import com.androiders.dateme.core.theme.CongoPink
 import com.androiders.dateme.core.theme.PinkLavender
-import com.google.firebase.auth.FirebaseAuth
+import com.androiders.dateme.features.auth.viewModel.AuthViewModel
+import com.androiders.dateme.util.NetworkResult
+import com.google.firebase.auth.FirebaseUser
 
 @Composable
-fun SignUpScreen(auth: FirebaseAuth) {
+fun SignUpScreen(authViewModel: AuthViewModel) {
 
     val tag = "SignUpScreen"
     val context = LocalContext.current
@@ -43,6 +45,8 @@ fun SignUpScreen(auth: FirebaseAuth) {
     var passwordTextState by remember { mutableStateOf(TextFieldValue()) }
 
     var isPasswordVisible by remember { mutableStateOf(false) }
+
+    val authResource = authViewModel.signupFlow.collectAsState()
 
     ScreenContent(
         gradient,
@@ -56,9 +60,10 @@ fun SignUpScreen(auth: FirebaseAuth) {
         {
             isPasswordVisible = !isPasswordVisible
         },
-        auth,
+        authViewModel,
         tag,
-        context
+        context,
+        authResource
     )
 }
 
@@ -73,9 +78,10 @@ fun ScreenContent(
     onEmailTextChange: (value: TextFieldValue) -> Unit,
     onPasswordTextChange: (value: TextFieldValue) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
-    auth: FirebaseAuth,
+    authViewModel: AuthViewModel,
     tag: String,
-    context: Context
+    context: Context,
+    authResource: State<NetworkResult<FirebaseUser>?>
 
 ) {
     Box(
@@ -193,7 +199,35 @@ fun ScreenContent(
 
                 Button(
                     onClick = {
-                        createAccount(emailTextState, passwordTextState, auth, tag, context)
+                        authViewModel.signupWithEmailAndPassword(
+                            emailTextState.text,
+                            passwordTextState.text
+                        )
+
+                        authResource.value?.let {
+                            when (it) {
+
+                                is NetworkResult.Error -> {
+                                    Log.i(tag, "createUserWithEmail:failure ${it.message}")
+                                    Toast.makeText(
+                                        context,
+                                        "createUserWithEmail:failure",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                                is NetworkResult.Loading -> {
+                                }
+
+                                is NetworkResult.Success -> {
+                                    Log.d(tag, "createUserWithEmail:successs")
+                                    Toast.makeText(
+                                        context, "user created successfully",
+                                        Toast.LENGTH_SHORT
+                                    ).show() // should be replaced with navigation
+                                }
+                            }
+                        }
                     },
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
@@ -269,30 +303,4 @@ fun ScreenContent(
             }
         }
     }
-}
-
-private fun createAccount(
-    email: TextFieldValue,
-    password: TextFieldValue,
-    auth: FirebaseAuth,
-    tag: String,
-    context: Context
-) {
-    auth.createUserWithEmailAndPassword(email.text, password.text)
-        .addOnCompleteListener { task ->
-
-            if (task.isSuccessful) {
-                // Sign in success, update UI with the signed-in user's information
-                Log.d(tag, "createUserWithEmail:success")
-//            val user = auth.currentUser
-//            updateUI(user)
-            } else {
-                // If sign in fails, display a message to the user.
-                Log.w(tag, "createUserWithEmail:failure", task.exception)
-                Toast.makeText(
-                    context, "Authentication failed.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
 }
