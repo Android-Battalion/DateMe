@@ -4,6 +4,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "org.jlleitschuh.gradle.ktlint" version '11.0.0'
+    id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -87,6 +90,20 @@ dependencies {
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$junit_androidx"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_androidx"
+
+    // Firebase Dependencies
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //Hilt dependencies
+    implementation "com.google.dagger:hilt-android:2.42"
+    kapt "com.google.dagger:hilt-android-compiler:2.42"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+
+    //ViewModel compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
 
     androidTestImplementation Libs.AndroidX.Compose.uiTest
     debugImplementation Libs.AndroidX.Compose.uiTooling

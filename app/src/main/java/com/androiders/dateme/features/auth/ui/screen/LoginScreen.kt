@@ -1,5 +1,8 @@
-package com.androiders.dateme.features.login.ui.screen
+package com.androiders.dateme.features.auth.ui.screen
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -12,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.ExtraBold
@@ -24,9 +28,15 @@ import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
 import com.androiders.dateme.core.theme.CongoPink
 import com.androiders.dateme.core.theme.PinkLavender
+import com.androiders.dateme.features.auth.viewModel.AuthViewModel
+import com.androiders.dateme.util.NetworkResult
+import com.google.firebase.auth.FirebaseUser
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(authViewModel: AuthViewModel) {
+
+    val tag = "LoginScreen"
+    val context = LocalContext.current
 
     val gradient = Brush.verticalGradient(0.5f to CongoPink, 0.5f to Color.White)
 
@@ -34,6 +44,8 @@ fun LoginScreen() {
     var passwordTextState by remember { mutableStateOf(TextFieldValue()) }
 
     var isPasswordVisible by remember { mutableStateOf(false) }
+
+    val authResource = authViewModel.loginFlow.collectAsState()
 
     ScreenContent(
         gradient,
@@ -44,7 +56,11 @@ fun LoginScreen() {
         { value -> passwordTextState = value },
         {
             isPasswordVisible = !isPasswordVisible
-        }
+        },
+        authViewModel,
+        tag,
+        context,
+        authResource
     )
 }
 
@@ -57,7 +73,10 @@ fun ScreenContent(
     onEmailTextChange: (value: TextFieldValue) -> Unit,
     onPasswordTextChange: (value: TextFieldValue) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
-
+    viewModel: AuthViewModel,
+    tag: String,
+    context: Context,
+    authResource: State<NetworkResult<FirebaseUser>?>
 ) {
     Box(
         modifier = Modifier
@@ -155,7 +174,37 @@ fun ScreenContent(
                 }
 
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        viewModel.loginWithEmailAndPassword(
+                            emailTextState.text,
+                            passwordTextState.text
+                        )
+
+                        authResource.value?.let {
+                            when (it) {
+
+                                is NetworkResult.Error -> {
+                                    Log.i(tag, "signInWithEmail:failure ${it.message}")
+                                    Toast.makeText(
+                                        context,
+                                        "The email or password you entered is incorrect.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                                is NetworkResult.Loading -> {
+                                }
+
+                                is NetworkResult.Success -> {
+                                    Log.d(tag, "signInWithEmail:success")
+                                    Toast.makeText(
+                                        context, "Authentication sucess.",
+                                        Toast.LENGTH_SHORT
+                                    ).show() // should be replaced with navigation
+                                }
+                            }
+                        }
+                    },
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .padding(top = 40.dp)
@@ -231,3 +280,28 @@ fun ScreenContent(
         }
     }
 }
+
+// private fun signIn(
+//    email: TextFieldValue,
+//    password: TextFieldValue,
+//    auth: FirebaseAuth,
+//    tag: String,
+//    context: Context
+// ) {
+//    auth.signInWithEmailAndPassword(email.text, password.text)
+//        .addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                // Sign in success, update UI with the signed-in user's information
+//                Log.d(tag, "signInWithEmail:success")
+// //                val user = auth.currentUser
+// //                updateUI(user)
+//            } else {
+//                // If sign in fails, display a message to the user.
+//                Log.w(tag, "signInWithEmail:failure", task.exception)
+//                Toast.makeText(
+//                    context, "Authentication failed.",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        }
+// }

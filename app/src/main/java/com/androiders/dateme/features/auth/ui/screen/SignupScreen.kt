@@ -1,5 +1,8 @@
 package com.androiders.dateme.features.signUp.ui.screen
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -12,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.ExtraBold
@@ -24,9 +28,15 @@ import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
 import com.androiders.dateme.core.theme.CongoPink
 import com.androiders.dateme.core.theme.PinkLavender
+import com.androiders.dateme.features.auth.viewModel.AuthViewModel
+import com.androiders.dateme.util.NetworkResult
+import com.google.firebase.auth.FirebaseUser
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(authViewModel: AuthViewModel) {
+
+    val tag = "SignUpScreen"
+    val context = LocalContext.current
 
     val gradient = Brush.verticalGradient(0.5f to CongoPink, 0.5f to Color.White)
 
@@ -35,6 +45,8 @@ fun SignUpScreen() {
     var passwordTextState by remember { mutableStateOf(TextFieldValue()) }
 
     var isPasswordVisible by remember { mutableStateOf(false) }
+
+    val authResource = authViewModel.signupFlow.collectAsState()
 
     ScreenContent(
         gradient,
@@ -47,7 +59,11 @@ fun SignUpScreen() {
         { value -> passwordTextState = value },
         {
             isPasswordVisible = !isPasswordVisible
-        }
+        },
+        authViewModel,
+        tag,
+        context,
+        authResource
     )
 }
 
@@ -62,6 +78,10 @@ fun ScreenContent(
     onEmailTextChange: (value: TextFieldValue) -> Unit,
     onPasswordTextChange: (value: TextFieldValue) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
+    authViewModel: AuthViewModel,
+    tag: String,
+    context: Context,
+    authResource: State<NetworkResult<FirebaseUser>?>
 
 ) {
     Box(
@@ -178,7 +198,37 @@ fun ScreenContent(
                 )
 
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        authViewModel.signupWithEmailAndPassword(
+                            emailTextState.text,
+                            passwordTextState.text
+                        )
+
+                        authResource.value?.let {
+                            when (it) {
+
+                                is NetworkResult.Error -> {
+                                    Log.i(tag, "createUserWithEmail:failure ${it.message}")
+                                    Toast.makeText(
+                                        context,
+                                        "createUserWithEmail:failure",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                                is NetworkResult.Loading -> {
+                                }
+
+                                is NetworkResult.Success -> {
+                                    Log.d(tag, "createUserWithEmail:successs")
+                                    Toast.makeText(
+                                        context, "user created successfully",
+                                        Toast.LENGTH_SHORT
+                                    ).show() // should be replaced with navigation
+                                }
+                            }
+                        }
+                    },
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .padding(top = 40.dp)
