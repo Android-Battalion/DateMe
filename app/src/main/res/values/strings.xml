@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">DateMe</string>
     <string name="title_activity_onboarding">Onboarding</string>
-    <string name="discover">Discover</string>
+<!--    This is the string values for the OnBoardingPages.kt-->
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_desc">Enjoy the moment. Meet new and interesting people around you.</string>
+
+    <string name="discover_title">Discover</string>
+    <string name="discover_desc">Find the special one. Match and connect with your type.</string>
+
+    <string name="get_started_title">Get Started!</string>
+    <string name="get_started_desc">Make a profile and start exploring who\'s out there.</string>
+
 </resources>
