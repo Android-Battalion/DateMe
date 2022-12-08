@@ -10,12 +10,16 @@ import com.androiders.dateme.R
 
 // Set of Material typography styles to start with
 
-val PoppinsFam = FontFamily(Font(R.font.poppins_bold))
-val ReemKufiFam = FontFamily(Font(R.font.reem_kufi))
+val PoppinsFam = FontFamily(
+    Font(R.font.poppins_bold, weight = FontWeight.Bold)
+)
+val ReemKufiFam = FontFamily(
+    Font(R.font.reem_kufi, weight = FontWeight.Bold)
+)
 
 val Typography = Typography(
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
+    defaultFontFamily = PoppinsFam,
+    h6 = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     )
