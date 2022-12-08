@@ -11,4 +11,7 @@
     <string name="get_started_title">Get Started!</string>
     <string name="get_started_desc">Make a profile and start exploring who\'s out there.</string>
 
+    <!--    This is the string values for the chatScreen.kt-->
+    <string name="say_something_nice">say something nice …</string>
+
 </resources>

@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
@@ -26,6 +27,7 @@ import com.androiders.dateme.core.theme.CongoPink
 import com.androiders.dateme.core.theme.PinkLavender
 
 @Composable
+@Preview
 fun LoginScreen() {
 
     val gradient = Brush.verticalGradient(0.5f to CongoPink, 0.5f to Color.White)
