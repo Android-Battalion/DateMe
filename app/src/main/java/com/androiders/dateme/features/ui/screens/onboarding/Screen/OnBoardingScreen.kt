@@ -5,27 +5,10 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -43,12 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
-import com.androiders.dateme.core.theme.BottomCardShape
-import com.androiders.dateme.core.theme.CardBack
-import com.androiders.dateme.core.theme.ColorBlue
-import com.androiders.dateme.core.theme.ColorDarkRed
-import com.androiders.dateme.core.theme.DateMeTheme
-import com.androiders.dateme.core.theme.PoppinsFam
+import com.androiders.dateme.core.theme.*
 import com.androiders.dateme.features.ui.screens.onboarding.Model.OnBoardingUiModel
 import com.androiders.dateme.features.ui.screens.onboarding.Provider.OnBoardingPagesProvider
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -115,9 +93,11 @@ fun OnBoardingPager(
                     .fillMaxWidth()
                     .height(340.dp)
                     .clip(RoundedCornerShape(topStart = 150.dp)),
-                backgroundColor = CardBack,
-                elevation = 0.dp,
-                shape = BottomCardShape.small
+//                shape = BottomCardShape.extraLarge,
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme
+                        .primaryContainer
+                )
             ) {
                 Box {
                     Column(
@@ -137,8 +117,8 @@ fun OnBoardingPager(
                         Text(
                             text = item[pagerState.currentPage].desc,
                             modifier = Modifier.padding(top = 20.dp, start = 40.dp, end = 20.dp),
-                            color = MaterialTheme.colors.onSurface,
-                            fontFamily = MaterialTheme.typography.body1.fontFamily,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            fontFamily = MaterialTheme.typography.bodyMedium.fontFamily,
                             fontSize = 17.sp,
                             textAlign = TextAlign.Center,
                             fontWeight = FontWeight.Light,
@@ -213,10 +193,10 @@ fun OnBoardingPager(
                                     },
                                     modifier = Modifier.fillMaxWidth(),
                                     colors = ButtonDefaults.buttonColors(
-                                        backgroundColor = item[pagerState.currentPage].mainColor
+                                        containerColor = item[pagerState.currentPage].mainColor
                                     ),
                                     contentPadding = PaddingValues(vertical = 12.dp),
-                                    elevation = ButtonDefaults.elevation(
+                                    elevation = ButtonDefaults.buttonElevation(
                                         defaultElevation = 4.dp
                                     )
                                 ) {

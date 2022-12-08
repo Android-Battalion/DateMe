@@ -6,7 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,6 +48,7 @@ fun LoginScreen() {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent(
     gradient: Brush,
@@ -70,7 +71,7 @@ fun ScreenContent(
             modifier = Modifier.fillMaxSize()
         ) {
             Text(
-                text = "IDate",
+                text = "DateMe",
                 modifier = Modifier.padding(top = 100.dp),
                 fontWeight = ExtraBold,
                 fontSize = 40.sp,
@@ -95,6 +96,7 @@ fun ScreenContent(
                     value = emailTextState,
                     onValueChange = { onEmailTextChange(it) },
                     colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color.Transparent,
                         textColor = Color.Black,
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
@@ -119,6 +121,7 @@ fun ScreenContent(
                     value = passwordTextState,
                     onValueChange = { onPasswordTextChange(it) },
                     colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color.Transparent,
                         textColor = Color.Black,
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
@@ -162,7 +165,7 @@ fun ScreenContent(
                         .clip(shape = RoundedCornerShape(10.dp))
                         .width(320.dp)
                         .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = CongoPink),
+                    colors = ButtonDefaults.buttonColors(containerColor = CongoPink),
                 ) {
                     Text(text = "Login", fontWeight = Bold, fontSize = 16.sp)
                 }

@@ -1,25 +1,26 @@
 package com.androiders.dateme.core.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-private val DarkColorPalette = darkColors(
+private val DarkColorPalette = darkColorScheme(
     primary = Purple200,
-    primaryVariant = Purple700,
+    onPrimary = Purple700,
     secondary = Teal200,
     background = ColorDarkRed,
-    onBackground = CongoPink
+    onBackground = CongoPink,
+    primaryContainer = CardBack
 
 )
 
-private val LightColorPalette = lightColors(
+private val LightColorPalette = lightColorScheme(
     primary = Purple500,
-    primaryVariant = Purple700,
+    onPrimary = Purple700,
     secondary = Teal200,
     background = CardBack,
     onBackground = CongoPink
@@ -51,7 +52,7 @@ fun DateMeTheme(
     }
 
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         typography = Typography,
         shapes = Shapes,
         content = content

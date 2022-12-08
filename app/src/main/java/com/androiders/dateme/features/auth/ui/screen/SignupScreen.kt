@@ -9,7 +9,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -67,6 +67,7 @@ fun SignUpScreen(authViewModel: AuthViewModel) {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent(
     gradient: Brush,
@@ -235,7 +236,7 @@ fun ScreenContent(
                         .clip(shape = RoundedCornerShape(10.dp))
                         .width(320.dp)
                         .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = CongoPink),
+                    colors = ButtonDefaults.buttonColors(containerColor = CongoPink),
                 ) {
                     Text(text = "Sign Up", fontWeight = Bold, fontSize = 16.sp)
                 }

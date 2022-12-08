@@ -1,6 +1,6 @@
 package com.androiders.dateme.core.theme
 
-import androidx.compose.material.Typography
+import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -13,13 +13,12 @@ import com.androiders.dateme.R
 val PoppinsFam = FontFamily(
     Font(R.font.poppins_bold, weight = FontWeight.Bold)
 )
-val ReemKufiFam = FontFamily(
-    Font(R.font.reem_kufi, weight = FontWeight.Bold)
-)
+// val ReemKufiFam = FontFamily(
+//    Font(R.font.reem_kufi, weight = FontWeight.Bold)
+// )
 
 val Typography = Typography(
-    defaultFontFamily = PoppinsFam,
-    h6 = TextStyle(
+    bodyLarge = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     )
