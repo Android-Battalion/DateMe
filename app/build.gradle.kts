@@ -48,6 +48,11 @@ android {
     ktlint {
         disabledRules.set(setOf("no-wildcard-imports", "filename"))
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
     composeOptions {
         kotlinCompilerExtensionVersion = Libs.Kotlin.kotlinCompiler
     }
@@ -97,6 +102,12 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.4")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
+
+    testImplementation("org.robolectric:robolectric:4.9")
+    testImplementation("androidx.test.espresso:espresso-core:3.5.0")
+
+    testImplementation("androidx.compose.ui:ui-test-junit4:1.3.2")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.2")
 
     androidTestImplementation(Libs.AndroidX.Compose.uiTest)
     debugImplementation(Libs.AndroidX.Compose.uiTooling)
