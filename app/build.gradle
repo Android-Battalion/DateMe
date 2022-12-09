@@ -1,53 +1,49 @@
 import com.androiders.dateme.buildsrc.Libs
 import com.androiders.dateme.buildsrc.SDK
 plugins {
-    id ("com.android.application")
-    id ("org.jetbrains.kotlin.android")
-    id ("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id "org.jlleitschuh.gradle.ktlint" version '11.0.0'
 }
 
 android {
-    compileSdk = SDK.max
+    compileSdk SDK.max
 
     defaultConfig {
-        applicationId = "com.androiders.dateme"
-        minSdk = SDK.min
-        targetSdk = SDK.max
-        versionCode = 1
-        versionName = "1.0"
+        applicationId "com.androiders.dateme"
+        minSdk SDK.min
+        targetSdk SDK.max
+        versionCode 1
+        versionName "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            useSupportLibrary = true
+            useSupportLibrary true
         }
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-            )
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = '1.8'
     }
     buildFeatures {
-        compose = true
+        compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Kotlin.kotlinCompiler
+        kotlinCompilerExtensionVersion Libs.Kotlin.kotlinCompiler
     }
     packagingOptions {
         resources {
-            pickFirsts.add("META-INF/io.netty.versions.properties")
-            pickFirsts.add("META-INF/INDEX.LIST")
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
 }
@@ -59,39 +55,39 @@ ktlint{
     ignoreFailures = false
     disabledRules = ["no-wildcard-imports"]
     reporters {
-        reporter = "plain"
-        reporter = "checkstyle"
-        reporter = "sarif"
+        reporter "plain"
+        reporter "checkstyle"
+        reporter "sarif"
     }
 }
 
 dependencies {
 
     // Core Dependencies
-    implementation (Libs.AndroidX.coreKtx)
-    implementation (Libs.AndroidX.Compose.ui)
-    implementation (Libs.AndroidX.Compose.material)
-    implementation (Libs.AndroidX.Compose.toolingPreview)
-    implementation (Libs.AndroidX.Activity.activityCompose)
-    implementation (Libs.AndroidX.Lifecycle.runtime)
+    implementation Libs.AndroidX.coreKtx
+    implementation Libs.AndroidX.Compose.ui
+    implementation Libs.AndroidX.Compose.material
+    implementation Libs.AndroidX.Compose.toolingPreview
+    implementation Libs.AndroidX.Activity.activityCompose
+    implementation Libs.AndroidX.Lifecycle.runtime
 
     // Google Accompanist
-    implementation (Libs.Accompanist.systemUi)
-    implementation (Libs.Accompanist.pager)
+    implementation Libs.Accompanist.systemUi
+    implementation Libs.Accompanist.pager
     //This dependency is used for Horizontal Pager.
 
     // Splash Screen API
-    implementation (Libs.SplashScreen.core)
+    implementation Libs.SplashScreen.core
 
     // Navigation Compose
-    implementation (Libs.Navigation.nav)
+    implementation Libs.Navigation.nav
 
     // Testing Dependencies
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.4")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.0")
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$junit_androidx"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_androidx"
 
-    androidTestImplementation (Libs.AndroidX.Compose.uiTest)
-    debugImplementation (Libs.AndroidX.Compose.uiTooling)
-    debugImplementation (Libs.AndroidX.Compose.toolingPreview)
+    androidTestImplementation Libs.AndroidX.Compose.uiTest
+    debugImplementation Libs.AndroidX.Compose.uiTooling
+    debugImplementation Libs.AndroidX.Compose.toolingPreview
 }
