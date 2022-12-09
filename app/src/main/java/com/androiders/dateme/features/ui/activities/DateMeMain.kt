@@ -16,7 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.androiders.dateme.core.theme.DateMeTheme
-import com.androiders.dateme.features.login.ui.screen.LoginScreen
+import com.androiders.dateme.features.ui.screens.login.LoginScreen
 import com.androiders.dateme.features.ui.screens.main.HomePla
 import com.androiders.dateme.features.ui.screens.pages.FromHome
 import com.androiders.dateme.features.ui.screens.pages.NavRoutes

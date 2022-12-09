@@ -11,4 +11,17 @@
     <string name="get_started_title">Get Started!</string>
     <string name="get_started_desc">Make a profile and start exploring who\'s out there.</string>
 
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="i_date">IDate</string>
+    <string name="or">OR</string>
+    <string name="forgot_pwd">Forgot Password</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="donothaveaccount">Don’t have an account?</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="mobile_logo">Mobile Logo</string>
+    <string name="facebook_logo">Facebook Logo"</string>
+    <string name="password_toggle">Password Toggle"</string>
+
 </resources>
