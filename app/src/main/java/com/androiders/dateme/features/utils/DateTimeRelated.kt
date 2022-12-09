@@ -1,7 +1,7 @@
 package com.androiders.dateme.features.utils
 
-import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
+import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -14,7 +14,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import java.util.*
 
-@SuppressLint("SimpleDateFormat")
 @Composable
 fun DisplayClock() {
     Column(
@@ -24,13 +23,15 @@ fun DisplayClock() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Current date and time in Android\n", fontSize = 25.sp)
-        val sdf = SimpleDateFormat("'Date: 'MM-dd-yyyy'\nand\nTime: 'HH:mm:ss z")
-        val currentDateAndTime = sdf.format(Date())
-        Text(
-            text = currentDateAndTime,
-            textAlign = TextAlign.Center,
-            color = Color.White,
-            fontSize = 25.sp
-        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val sdf = SimpleDateFormat("'Date: 'MM-dd-yyyy'\nand\nTime: 'HH:mm:ss z")
+            val currentDateAndTime = sdf.format(Date())
+            Text(
+                text = currentDateAndTime,
+                textAlign = TextAlign.Center,
+                color = Color.White,
+                fontSize = 25.sp
+            )
+        }
     }
 }
