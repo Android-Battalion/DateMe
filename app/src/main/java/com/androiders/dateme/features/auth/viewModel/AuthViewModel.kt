@@ -6,10 +6,10 @@ import com.androiders.dateme.repository.AuthRepository
 import com.androiders.dateme.util.NetworkResult
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
