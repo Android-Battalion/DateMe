@@ -1,4 +1,4 @@
-package com.androiders.dateme.features.login.ui.screen
+package com.androiders.dateme.features.ui.screens.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.font.FontWeight.Companion.ExtraBold
 import androidx.compose.ui.text.input.KeyboardType
@@ -70,7 +71,7 @@ fun ScreenContent(
             modifier = Modifier.fillMaxSize()
         ) {
             Text(
-                text = "IDate",
+                text = stringResource(id = R.string.i_date),
                 modifier = Modifier.padding(top = 100.dp),
                 fontWeight = ExtraBold,
                 fontSize = 40.sp,
@@ -86,7 +87,7 @@ fun ScreenContent(
                     .height(500.dp),
             ) {
                 Text(
-                    text = "Email",
+                    text = stringResource(id = R.string.email),
                     color = Color.Black,
                     modifier = Modifier.padding(top = 30.dp, start = 20.dp, bottom = 5.dp)
                 )
@@ -110,7 +111,7 @@ fun ScreenContent(
                 )
 
                 Text(
-                    text = "Password",
+                    text = stringResource(id = R.string.password),
                     color = Color.Black,
                     modifier = Modifier.padding(top = 30.dp, start = 20.dp, bottom = 5.dp)
                 )
@@ -141,7 +142,8 @@ fun ScreenContent(
                                 (id = R.drawable.ic_eye_password_show) else painterResource(
                                     id = R.drawable.ic_eye_password_hide
                                 ),
-                                contentDescription = "Password Toggle", tint = Color.Black
+                                contentDescription = stringResource(id = R.string.password_toggle),
+                                tint = Color.Black
                             )
                         }
                     }
@@ -149,7 +151,7 @@ fun ScreenContent(
 
                 TextButton(onClick = { /*TODO*/ }) {
                     Text(
-                        text = "Forgot Password",
+                        text = stringResource(id = R.string.forgot_pwd),
                         modifier = Modifier.padding(top = 5.dp, start = 220.dp)
                     )
                 }
@@ -164,11 +166,15 @@ fun ScreenContent(
                         .height(50.dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = CongoPink),
                 ) {
-                    Text(text = "Login", fontWeight = Bold, fontSize = 16.sp)
+                    Text(
+                        text = stringResource(id = R.string.login),
+                        fontWeight = Bold,
+                        fontSize = 16.sp
+                    )
                 }
 
                 Text(
-                    text = "OR",
+                    text = stringResource(id = R.string.or),
                     color = Color.Black, fontWeight = Bold,
                     modifier = Modifier
                         .padding(top = 30.dp)
@@ -189,7 +195,7 @@ fun ScreenContent(
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_facebook),
-                            contentDescription = "Facebook Logo",
+                            contentDescription = stringResource(id = R.string.facebook_logo),
                             modifier = Modifier.size(30.dp)
                         )
                     }
@@ -199,7 +205,7 @@ fun ScreenContent(
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_google),
-                            contentDescription = "Google Logo",
+                            contentDescription = stringResource(id = R.string.google_logo),
                             modifier = Modifier.size(30.dp)
                         )
                     }
@@ -209,7 +215,7 @@ fun ScreenContent(
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_smartphone),
-                            contentDescription = "Mobile Logo",
+                            contentDescription = stringResource(id = R.string.mobile_logo),
                             modifier = Modifier.size(30.dp)
                         )
                     }
@@ -223,9 +229,19 @@ fun ScreenContent(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-                Text(text = "Don’t have an account?", color = Color.Black, fontSize = 16.sp)
-                TextButton(onClick = { /*TODO*/ }) {
-                    Text(text = "Register", color = Color.Red, fontSize = 16.sp)
+                Text(
+                    text = stringResource(id = R.string.donothaveaccount),
+                    color = Color.Black,
+                    fontSize = 16.sp
+                )
+                TextButton(
+                    onClick = { /*TODO*/ }
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.register),
+                        color = Color.Red,
+                        fontSize = 16.sp
+                    )
                 }
             }
         }
