@@ -1,1 +1,4 @@
 Just add notes here for future reference or to others
+
+To check dependencies that need updates press ctrl twice and a run anything window might appear
+on the window paste " gradle dependencyUpdates " - Felix-Kariuki
