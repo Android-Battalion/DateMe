@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
@@ -149,7 +150,10 @@ fun ScreenContent(
                     }
                 )
 
-                TextButton(onClick = { /*TODO*/ }) {
+                TextButton(
+                    modifier = Modifier.testTag("forgot_pwd"),
+                    onClick = { /*TODO*/ }
+                ) {
                     Text(
                         text = stringResource(id = R.string.forgot_pwd),
                         modifier = Modifier.padding(top = 5.dp, start = 220.dp)
@@ -163,7 +167,8 @@ fun ScreenContent(
                         .padding(top = 40.dp)
                         .clip(shape = RoundedCornerShape(10.dp))
                         .width(320.dp)
-                        .height(50.dp),
+                        .height(50.dp)
+                        .testTag("login_button"),
                     colors = ButtonDefaults.buttonColors(backgroundColor = CongoPink),
                 ) {
                     Text(
