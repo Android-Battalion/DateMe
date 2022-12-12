@@ -3,11 +3,11 @@ package com.androiders.dateme.features.ui.screens.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.androiders.dateme.features.ui.screens.pages.NavRoutes
@@ -17,13 +17,13 @@ fun HomePla(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.LightGray),
+            .background(MaterialTheme.colors.background),
         contentAlignment = Alignment.Center
     ) {
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .background(Color.LightGray),
+                .background(MaterialTheme.colors.background),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

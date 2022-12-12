@@ -2,12 +2,12 @@
 <resources>
 
     <style name="Theme.DateMe" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/pinkish</item>
+        <item name="android:statusBarColor">@color/CongoPink</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <!-- Set the splash screen background, animated icon, and animation duration. -->
-        <item name="windowSplashScreenBackground">@color/pinkish</item>
+        <item name="windowSplashScreenBackground">@color/CongoPink</item>
 
         <!-- Use windowSplashScreenAnimatedIcon to add either a drawable or an
              animated drawable. One of these is required. -->

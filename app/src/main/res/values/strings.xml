@@ -14,6 +14,7 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="i_date">IDate</string>
+    <string name="DateMe">DateMe</string>
     <string name="or">OR</string>
     <string name="forgot_pwd">Forgot Password</string>
     <string name="password">Password</string>

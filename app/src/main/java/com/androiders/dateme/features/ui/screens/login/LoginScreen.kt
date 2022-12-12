@@ -71,11 +71,11 @@ fun ScreenContent(
             modifier = Modifier.fillMaxSize()
         ) {
             Text(
-                text = stringResource(id = R.string.i_date),
+                text = stringResource(id = R.string.DateMe),
                 modifier = Modifier.padding(top = 100.dp),
                 fontWeight = ExtraBold,
                 fontSize = 40.sp,
-                color = Color.White
+                color = MaterialTheme.colors.onBackground
             )
 
             Spacer(modifier = Modifier.padding(top = 50.dp))

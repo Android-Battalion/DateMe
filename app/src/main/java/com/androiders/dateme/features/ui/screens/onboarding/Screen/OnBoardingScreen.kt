@@ -39,15 +39,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.androiders.dateme.R
 import com.androiders.dateme.core.theme.BottomCardShape
-import com.androiders.dateme.core.theme.CardBack
-import com.androiders.dateme.core.theme.ColorBlue
 import com.androiders.dateme.core.theme.ColorDarkRed
-import com.androiders.dateme.core.theme.DateMeTheme
 import com.androiders.dateme.core.theme.PoppinsFam
 import com.androiders.dateme.features.ui.screens.onboarding.Model.OnBoardingUiModel
 import com.androiders.dateme.features.ui.screens.onboarding.Provider.OnBoardingPagesProvider
@@ -74,7 +70,7 @@ fun OnBoardingScreen() {
         item = onBoardingPages, pagerState = pagerState,
         modifier = Modifier
             .fillMaxSize()
-            .background(color = ColorBlue)
+            .background(MaterialTheme.colors.background)
     )
 }
 
@@ -115,7 +111,7 @@ fun OnBoardingPager(
                     .fillMaxWidth()
                     .height(340.dp)
                     .clip(RoundedCornerShape(topStart = 150.dp)),
-                backgroundColor = CardBack,
+                backgroundColor = MaterialTheme.colors.background,
                 elevation = 0.dp,
                 shape = BottomCardShape.small
             ) {
@@ -126,8 +122,9 @@ fun OnBoardingPager(
                     ) {
                         PagerIndicator(items = item, currentPage = pagerState.currentPage)
                         Text(
+                            modifier = Modifier,
                             text = item[pagerState.currentPage].title,
-                            color = item[pagerState.currentPage].mainColor,
+                            color = item[pagerState.currentPage].TextColorFromTheme,
                             fontFamily = PoppinsFam,
                             textAlign = TextAlign.Center,
                             fontSize = 20.sp,
@@ -202,14 +199,14 @@ fun OnBoardingPager(
                                         painter = painterResource(id = R.drawable.ic_right_arrow),
                                         contentDescription = "",
                                         // tint = item[pagerState.currentPage].backgroundColor,
-                                        tint = Color(0xffFFB9BA),
+                                        tint = MaterialTheme.colors.onPrimary,
                                         modifier = Modifier.size(20.dp)
                                     )
                                 }
                             } else {
                                 Button(
                                     onClick = {
-                                        // show home screen
+//                                        navController.navigate(NavRoutes.Login.route)
                                     },
                                     modifier = Modifier.fillMaxWidth(),
                                     colors = ButtonDefaults.buttonColors(
@@ -289,10 +286,10 @@ fun rememberPagerState(
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    DateMeTheme {
-        OnBoardingScreen()
-    }
-}
+// @Preview(showBackground = true)
+// @Composable
+// fun DefaultPreview() {
+//    DateMeTheme {
+//        OnBoardingScreen()
+//    }
+// }
