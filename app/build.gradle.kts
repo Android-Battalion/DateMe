@@ -1,21 +1,19 @@
-import com.androiders.dateme.buildsrc.Libs
-import com.androiders.dateme.buildsrc.SDK
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jlleitschuh.gradle.ktlint")
-    id("com.github.ben-manes.versions")
-    id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+    id(BuildPlugins.ANDROID_APPLICATION_PLUGIN)
+    id(BuildPlugins.KOTLIN_KAPT)
+    id(BuildPlugins.JETBRAINS_KOTLIN_ANDROID_PLUGIN)
+    id(BuildPlugins.KTLINT)
+    id(BuildPlugins.VERSIONS)
+    id(BuildPlugins.DAGGER_HILT_PLUGIN)
 }
 
 android {
-    compileSdk = SDK.max
+    compileSdk = ProjectProperties.COMPILE_SDK
 
     defaultConfig {
-        applicationId = "com.androiders.dateme"
-        minSdk = SDK.min
-        targetSdk = SDK.max
+        applicationId = ProjectProperties.APPLICATION_ID
+        minSdk = ProjectProperties.MIN_SDK
+        targetSdk = ProjectProperties.TARGET_SDK
         versionCode = 1
         versionName = "1.0"
 
@@ -54,7 +52,7 @@ android {
         }
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Kotlin.kotlinCompiler
+        kotlinCompilerExtensionVersion = Versions.KOTLIN_COMPILER_VERSION
     }
     packagingOptions {
         resources {
@@ -68,26 +66,26 @@ tasks.getByPath("preBuild").dependsOn("ktlintFormat")
 dependencies {
 
     // Core Dependencies
-    implementation(Libs.AndroidX.coreKtx)
-    implementation(Libs.AndroidX.Compose.ui)
-    implementation(Libs.AndroidX.Compose.material)
-    implementation(Libs.AndroidX.Compose.toolingPreview)
-    implementation(Libs.AndroidX.Activity.activityCompose)
-    implementation(Libs.AndroidX.Lifecycle.runtime)
+    implementation(Dependencies.AndroidX.CORE_KTX)
+    implementation(Dependencies.AndroidX.Compose.COMPOSE_UI)
+    implementation(Dependencies.AndroidX.Compose.COMPOSE_MATERIAL)
+    implementation(Dependencies.AndroidX.Compose.COMPOSE_PREVIEW_TOOLING)
+    implementation(Dependencies.AndroidX.Activity.COMPOSE_ACTIVITY)
+    implementation(Dependencies.AndroidX.Lifecycle.LIFECYCLE_RUNTIME)
 
     // Google Accompanist
-    implementation(Libs.Accompanist.systemUi)
-    implementation(Libs.Accompanist.pager)
+    implementation(Dependencies.Accompanist.SYSTEM_UI_CONTROLLER)
+    implementation(Dependencies.Accompanist.PAGER)
     // This dependency is used for Horizontal Pager.
 
-    // DataStore Preferences for yes/no onboarding
-    implementation(Libs.DataStore.prefs)
+    // DataStore Preferences
+    implementation(Dependencies.DataStore.PREFERENCES)
 
     // Splash Screen API
-    implementation(Libs.SplashScreen.core)
+    implementation(Dependencies.SplashScreen.SPLASH_SCREEN_CORE)
 
     // Navigation Compose
-    implementation(Libs.Navigation.nav)
+    implementation(Dependencies.Navigation.NAVIGATION_RUNTIME)
 
     // firebase
     implementation("com.google.firebase:firebase-auth-ktx:21.1.0")
@@ -109,9 +107,9 @@ dependencies {
     testImplementation("androidx.compose.ui:ui-test-junit4:1.3.2")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.2")
 
-    androidTestImplementation(Libs.AndroidX.Compose.uiTest)
-    debugImplementation(Libs.AndroidX.Compose.uiTooling)
-    debugImplementation(Libs.AndroidX.Compose.toolingPreview)
+    androidTestImplementation(Dependencies.AndroidX.Compose.COMPOSE_JUNIT_UI)
+    debugImplementation(Dependencies.AndroidX.Compose.COMPOSE_UI_TOOLING)
+    debugImplementation(Dependencies.AndroidX.Compose.COMPOSE_PREVIEW_TOOLING)
 }
 
 subprojects {

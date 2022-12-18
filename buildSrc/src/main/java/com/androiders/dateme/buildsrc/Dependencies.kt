@@ -1,61 +1,53 @@
-package com.androiders.dateme.buildsrc
-
-object SDK {
-    const val min = 21
-    const val max = 33
-    const val compile = max
-}
-
-object Libs {
-
-    object Kotlin {
-        const val kotlinCompiler = "1.3.2"
-    }
+object Dependencies {
 
     object AndroidX {
-        const val coreKtx = "androidx.core:core-ktx:1.7.0"
+        const val CORE_KTX = "androidx.core:core-ktx:${Versions.KTX_CORE}"
 
         object Compose {
-            const val version = "1.4.0-alpha01"
 
-            const val ui = "androidx.compose.ui:ui:$version"
-            const val material = "androidx.compose.material:material:$version"
-            const val toolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
+            const val COMPOSE_UI = "androidx.compose.ui:ui:${Versions.COMPOSE}"
+            const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Versions.COMPOSE}"
+            const val COMPOSE_PREVIEW_TOOLING =
+                "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE}"
 
-            //testing
-            const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
-            const val uiTooling = "androidx.compose.ui:ui-tooling:$version"
-            const val uiTestManifest = "androidx.compose.ui:ui-tooling:$version"
+            // Testing
+            const val COMPOSE_JUNIT_UI = "androidx.compose.ui:ui-test-junit4:${Versions.COMPOSE}"
+            const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling:${Versions.COMPOSE}"
 
         }
 
         object Activity {
-            const val activityCompose = "androidx.activity:activity-compose:1.6.1"
+            const val COMPOSE_ACTIVITY =
+                "androidx.activity:activity-compose:${Versions.COMPOSE_ACTIVITY}"
         }
 
         object Lifecycle {
-            const val version = "2.5.1"
-            const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
-            const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
+            const val LIFECYCLE_RUNTIME =
+                "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}"
+            const val LIFECYCLE_VIEWMODEL =
+                "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.LIFECYCLE}"
 
         }
     }
 
     object Accompanist {
-        const val systemUi = "com.google.accompanist:accompanist-systemuicontroller:0.27.0"
-        const val pager ="com.google.accompanist:accompanist-pager:0.12.0"
+        const val SYSTEM_UI_CONTROLLER =
+            "com.google.accompanist:accompanist-systemuicontroller:${Versions.SYSTEM_UI_CONTROLLER_VERSION}"
+
+        const val PAGER = "com.google.accompanist:accompanist-pager:${Versions.PAGER_VERSION}"
     }
 
     object Navigation {
-        const val nav = "androidx.navigation:navigation-runtime-ktx:2.5.3"
+        const val NAVIGATION_RUNTIME =
+            "androidx.navigation:navigation-runtime-ktx:${Versions.NAVIGATION}"
     }
 
     object SplashScreen {
-        const val core  = "androidx.core:core-splashscreen:1.0.0"
+        const val SPLASH_SCREEN_CORE = "androidx.core:core-splashscreen:${Versions.SPLASH_SCREEN}"
     }
 
     object DataStore {
-        const val prefs = "androidx.datastore:datastore-preferences:1.0.0"
+        const val PREFERENCES = "androidx.datastore:datastore-preferences:${Versions.DATA_STORE}"
     }
 
 
