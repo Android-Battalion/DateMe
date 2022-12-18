@@ -76,7 +76,6 @@ dependencies {
     // Google Accompanist
     implementation(Dependencies.Accompanist.SYSTEM_UI_CONTROLLER)
     implementation(Dependencies.Accompanist.PAGER)
-    // This dependency is used for Horizontal Pager.
 
     // DataStore Preferences
     implementation(Dependencies.DataStore.PREFERENCES)
@@ -88,25 +87,20 @@ dependencies {
     implementation(Dependencies.Navigation.NAVIGATION_RUNTIME)
 
     // firebase
-    implementation("com.google.firebase:firebase-auth-ktx:21.1.0")
+    implementation(Dependencies.Firebase.FIREBASE_AUTH)
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.43.2")
-    kapt("com.google.dagger:hilt-android-compiler:2.43.2")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(Dependencies.DaggerHilt.HILT_ANDROID)
+    kapt(Dependencies.DaggerHilt.HILT_ANDROID_COMPILER)
+    kapt(Dependencies.DaggerHilt.HILT_COMPILER)
+    implementation(Dependencies.DaggerHilt.HILT_NAVIGATION)
 
     // Testing Dependencies
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.4")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
-
-    testImplementation("org.robolectric:robolectric:4.9")
-    testImplementation("androidx.test.espresso:espresso-core:3.5.0")
-
-    testImplementation("androidx.compose.ui:ui-test-junit4:1.3.2")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.2")
-
+    testImplementation(Dependencies.Testing.JUNIT)
+    androidTestImplementation(Dependencies.Testing.JUNIT_ANDROID)
+    androidTestImplementation(Dependencies.Testing.ESPRESSO)
+    testImplementation(Dependencies.Testing.ROBOLECTRIC)
+    debugImplementation(Dependencies.AndroidX.Compose.COMPOSE_MANIFEST_TEST)
     androidTestImplementation(Dependencies.AndroidX.Compose.COMPOSE_JUNIT_UI)
     debugImplementation(Dependencies.AndroidX.Compose.COMPOSE_UI_TOOLING)
     debugImplementation(Dependencies.AndroidX.Compose.COMPOSE_PREVIEW_TOOLING)

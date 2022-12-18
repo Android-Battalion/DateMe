@@ -8,6 +8,16 @@ object Versions {
     const val SPLASH_SCREEN = "1.0.0"
     const val DATA_STORE = "1.0.0"
     const val DAGGER_HILT = "2.43.2"
+    const val DAGGER_HILT_COMPILER = "1.0.0"
+    const val DAGGER_HILT_NAVIGATION = "1.0.0"
+    const val FIREBASE_AUTH = "21.1.0"
+
+    // Testing
+    const val COMPOSE_TEST_MANIFEST = "1.3.2"
+    const val JUNIT = "4.13.2"
+    const val JUNIT_ANDROID = "1.1.4"
+    const val ROBOLECTRIC = "4.9"
+    const val ESPRESSO = "3.5.0"
 
     // Accompanist
     const val ACCOMPANIST_SYSTEM_UI_CONTROLLER = "0.27.0"
