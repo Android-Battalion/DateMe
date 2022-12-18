@@ -32,9 +32,9 @@ object Dependencies {
 
     object Accompanist {
         const val SYSTEM_UI_CONTROLLER =
-            "com.google.accompanist:accompanist-systemuicontroller:${Versions.SYSTEM_UI_CONTROLLER_VERSION}"
+            "com.google.accompanist:accompanist-systemuicontroller:${Versions.ACCOMPANIST_SYSTEM_UI_CONTROLLER}"
 
-        const val PAGER = "com.google.accompanist:accompanist-pager:${Versions.PAGER_VERSION}"
+        const val PAGER = "com.google.accompanist:accompanist-pager:${Versions.ACCOMPANIST_PAGER}"
     }
 
     object Navigation {

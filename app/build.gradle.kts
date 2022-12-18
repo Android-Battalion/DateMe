@@ -1,7 +1,7 @@
 plugins {
-    id(BuildPlugins.ANDROID_APPLICATION_PLUGIN)
+    id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_KAPT)
-    id(BuildPlugins.JETBRAINS_KOTLIN_ANDROID_PLUGIN)
+    id(BuildPlugins.JETBRAINS_KOTLIN_ANDROID)
     id(BuildPlugins.KTLINT)
     id(BuildPlugins.VERSIONS)
     id(BuildPlugins.DAGGER_HILT_PLUGIN)
@@ -113,7 +113,7 @@ dependencies {
 }
 
 subprojects {
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    apply(plugin = BuildPlugins.KTLINT)
 
     repositories {
         mavenCentral()
