@@ -1,61 +1,76 @@
-package com.androiders.dateme.buildsrc
-
-object SDK {
-    const val min = 21
-    const val max = 33
-    const val compile = max
-}
-
-object Libs {
-
-    object Kotlin {
-        const val kotlinCompiler = "1.3.2"
-    }
+object Dependencies {
 
     object AndroidX {
-        const val coreKtx = "androidx.core:core-ktx:1.7.0"
+        const val CORE_KTX = "androidx.core:core-ktx:${Versions.KTX_CORE}"
 
         object Compose {
-            const val version = "1.4.0-alpha01"
 
-            const val ui = "androidx.compose.ui:ui:$version"
-            const val material = "androidx.compose.material:material:$version"
-            const val toolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
+            const val COMPOSE_UI = "androidx.compose.ui:ui:${Versions.COMPOSE}"
+            const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Versions.COMPOSE}"
+            const val COMPOSE_PREVIEW_TOOLING =
+                "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE}"
 
-            //testing
-            const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
-            const val uiTooling = "androidx.compose.ui:ui-tooling:$version"
-            const val uiTestManifest = "androidx.compose.ui:ui-tooling:$version"
+            // Testing
+            const val COMPOSE_JUNIT_UI = "androidx.compose.ui:ui-test-junit4:${Versions.COMPOSE}"
+            const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling:${Versions.COMPOSE}"
+            const val COMPOSE_MANIFEST_TEST =
+                "androidx.compose.ui:ui-test-manifest:${Versions.COMPOSE_TEST_MANIFEST}"
 
         }
 
         object Activity {
-            const val activityCompose = "androidx.activity:activity-compose:1.6.1"
+            const val COMPOSE_ACTIVITY =
+                "androidx.activity:activity-compose:${Versions.COMPOSE_ACTIVITY}"
         }
 
         object Lifecycle {
-            const val version = "2.5.1"
-            const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
-            const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
+            const val LIFECYCLE_RUNTIME =
+                "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}"
+            const val LIFECYCLE_VIEWMODEL =
+                "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.LIFECYCLE}"
 
         }
     }
 
     object Accompanist {
-        const val systemUi = "com.google.accompanist:accompanist-systemuicontroller:0.27.0"
-        const val pager ="com.google.accompanist:accompanist-pager:0.12.0"
+        const val SYSTEM_UI_CONTROLLER =
+            "com.google.accompanist:accompanist-systemuicontroller:${Versions.ACCOMPANIST_SYSTEM_UI_CONTROLLER}"
+
+        const val PAGER = "com.google.accompanist:accompanist-pager:${Versions.ACCOMPANIST_PAGER}"
+    }
+
+    object Testing {
+        const val JUNIT = "junit:junit:${Versions.JUNIT}"
+        const val JUNIT_ANDROID = "androidx.test.ext:junit:${Versions.JUNIT_ANDROID}"
+        const val ROBOLECTRIC = "org.robolectric:robolectric:${Versions.ROBOLECTRIC}"
+        const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
     }
 
     object Navigation {
-        const val nav = "androidx.navigation:navigation-runtime-ktx:2.5.3"
+        const val NAVIGATION_RUNTIME =
+            "androidx.navigation:navigation-runtime-ktx:${Versions.NAVIGATION}"
     }
 
     object SplashScreen {
-        const val core  = "androidx.core:core-splashscreen:1.0.0"
+        const val SPLASH_SCREEN_CORE = "androidx.core:core-splashscreen:${Versions.SPLASH_SCREEN}"
     }
 
     object DataStore {
-        const val prefs = "androidx.datastore:datastore-preferences:1.0.0"
+        const val PREFERENCES = "androidx.datastore:datastore-preferences:${Versions.DATA_STORE}"
+    }
+
+    object Firebase {
+        const val FIREBASE_AUTH = "com.google.firebase:firebase-auth-ktx:${Versions.FIREBASE_AUTH}"
+    }
+
+    object DaggerHilt {
+        const val HILT_ANDROID =
+            "com.google.dagger:hilt-android:${Versions.DAGGER_HILT}"
+        const val HILT_ANDROID_COMPILER =
+            "com.google.dagger:hilt-android-compiler:${Versions.DAGGER_HILT}"
+        const val HILT_COMPILER = "androidx.hilt:hilt-compiler:${Versions.DAGGER_HILT_COMPILER}"
+        const val HILT_NAVIGATION =
+            "androidx.hilt:hilt-navigation-compose:${Versions.DAGGER_HILT_NAVIGATION}"
     }
 
 
