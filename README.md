@@ -19,8 +19,7 @@ The goal of this project is to practice & demonstrate the use of some Modern And
 ## 🚧 Project Under Construction 🚧
 
 As of now, this app is being built from the very scratch.
-Feel free to checkout the [Figma UI Design](https://www.figma.com/file/PgJFxHHQAnYB5roi11zgUb/DateMe!!---UI?node-id=0%3A1) and the [Figma Business Logic Document](https://www.figma.com/file/in7B7DzZMsSWm9b66eCYaL/DateMe!!---Business-Logic?node-id=9%3A641).
-
+Feel free to checkout the [Figma UI Design](https://www.figma.com/file/PgJFxHHQAnYB5roi11zgUb/DateMe!!---UI?node-id=0%3A1) 
 
 ## 🪶 Author(s) 🪶
 
