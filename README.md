@@ -1,6 +1,6 @@
 <!-- NOTE: The log might (or not) be changed -->
 <div align="center">
-  <a href="./">
+  <a href="https://github.com/Android-Battalion/DateMe">
     <img src="./docs/assets/logo/official_logo.svg" alt="Logo" width="80" height="80">
   </a>
 
