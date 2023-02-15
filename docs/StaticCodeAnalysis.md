@@ -1,3 +1,9 @@
+<div align="center">
+  <a href="./">
+    <img src="../docs/assets/logo/official_logo.svg" alt="Logo" width="80" height="80">
+  </a>
+</div>
+
 # Static Code Analysis
 
 This project leverages static analysis to ensure that the codebase meets certain standards that can
