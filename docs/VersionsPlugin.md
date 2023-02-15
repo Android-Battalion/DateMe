@@ -10,8 +10,8 @@ This project uses the [Gradle Versions Plugin](https://github.com/ben-manes/grad
 
 To run this check, use the following Gradle command:
 
-```
+```bash
 ./gradlew dependencyUpdates
 ```
 
-This will print the updates to the console, as well as a text file you can read from if necessary. 
+This will print the updates to the console, as well as a text file you can read from if necessary.

@@ -18,7 +18,7 @@ thresholds you can do so in the [config file](/config/detekt/detekt.yml).
 
 To run a detekt validation, use the following Gradle command:
 
-```
+```bash
 ./gradlew detekt
 ```
 
@@ -35,10 +35,10 @@ project. You can find the setup in [this Gradle file](/buildscripts/ktlint.gradl
 
 The following Gradle commands can be helpful:
 
-```
-// Will format the codebase
+```bash
+# Will format the codebase
 ./gradlew ktlintFormat
 
-// Will check if everything is formatted correctly
+# Will check if everything is formatted correctly
 ./gradlew ktlintCheck
 ```
