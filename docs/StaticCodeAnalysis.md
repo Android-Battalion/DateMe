@@ -1,3 +1,9 @@
+<div align="center">
+  <a href="https://github.com/Android-Battalion/DateMe">
+    <img src="../docs/assets/logo/official_logo.svg" alt="Logo" width="80" height="80">
+  </a>
+</div>
+
 # Static Code Analysis
 
 This project leverages static analysis to ensure that the codebase meets certain standards that can
@@ -12,7 +18,7 @@ thresholds you can do so in the [config file](/config/detekt/detekt.yml).
 
 To run a detekt validation, use the following Gradle command:
 
-```
+```bash
 ./gradlew detekt
 ```
 
@@ -29,10 +35,10 @@ project. You can find the setup in [this Gradle file](/buildscripts/ktlint.gradl
 
 The following Gradle commands can be helpful:
 
-```
-// Will format the codebase
+```bash
+# Will format the codebase
 ./gradlew ktlintFormat
 
-// Will check if everything is formatted correctly
+# Will check if everything is formatted correctly
 ./gradlew ktlintCheck
 ```
